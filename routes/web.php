@@ -10,6 +10,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware(['auth', 'role:Admin,Institution,Company'])->group(function () {
+Route::middleware(['auth', 'role:admin,institution,company'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\PagesController::class, 'dashboard'])->name('dashboard');
 });

@@ -16,21 +16,21 @@ class UserTableSeeder extends Seeder
         User::create([
             'name' => 'Admin',
             'email' => 'admin@admin.com',
-            'role' => 'Admin',
+            'role' => 'admin',
             'password' => bcrypt('admin@admin.com'),
         ]);
 
         User::create([
             'name' => 'Institution',
             'email' => 'institution@institution.com',
-            'role' => 'Institution',
+            'role' => 'institution',
             'password' => bcrypt('institution@institution.com'),
         ]);
 
         User::create([
             'name' => 'Company',
             'email' => 'company@company.com',
-            'role' => 'Company',
+            'role' => 'company',
             'password' => bcrypt('company@company.com'),
         ]);
     }
