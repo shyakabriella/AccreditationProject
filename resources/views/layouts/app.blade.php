@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="shortcut icon" href="img/favicon.ico">
-		<title>Accredition</title>
+		<title>Accreditation</title>
 		<link rel="stylesheet" type="text/css" href="{{ url('css/style.css') }}">
 	</head>
 	<body>

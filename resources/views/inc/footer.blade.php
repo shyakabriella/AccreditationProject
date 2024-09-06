@@ -1,6 +1,6 @@
 <footer class="flex items-center flex-auto h-16 px-4 footer sm:px-6 md:px-8">
     <div class="flex items-center justify-between flex-auto w-full">
-        <span>Copyright © 2023 <span class="font-semibold">Elstar</span> All rights reserved.</span>
+        <span>Copyright © 2024 <span class="font-semibold">Accreditation</span> All rights reserved.</span>
         <div>
             <a class="text-gray" href="#">Term &amp; Conditions</a>
             <span class="mx-2 text-muted"> | </span>
