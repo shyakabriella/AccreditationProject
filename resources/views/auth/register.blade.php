@@ -39,7 +39,7 @@
                                                 @csrf
                                                 <div class="form-container vertical">
                                                     <div class="form-item vertical">
-                                                        <label class="mb-2 form-label">User Name</label>
+                                                        <label class="mb-2 form-label">Name</label>
                                                         <div>
                                                             <input
                                                                 class="input"
