@@ -1,73 +1,108 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Accreditation - Sign Up</title>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    </head>
+    <body>
+        <div id="root">
+            <div class="app-layout-blank flex flex-auto flex-col h-[100vh]">
+                <div class="flex flex-col justify-between flex-auto h-full">
+                    <main class="h-full">
+                        <div class="relative flex flex-col flex-auto h-full page-container">
+                            <div class="grid h-full lg:grid-cols-3">
+                                <div class="flex flex-col items-center justify-center bg-white dark:bg-gray-800">
+                                    <div class="xl:min-w-[450px] px-8">
+                                        <div class="mb-8">
+                                            <h3 class="mb-1">Welcome back!</h3>
+                                            <p>Please enter your credentials to sign in!</p>
+                                        </div>
+                                        <div>
+                                            <form method="POST" action="{{ route('login') }}">
+                                                @csrf
+                                                <div class="form-container vertical">
+                                                    <div class="form-item vertical">
+                                                        <label class="mb-2 form-label">Email Address</label>
+                                                        <div>
+                                                            <input
+                                                                class="input"
+                                                                type="email"
+                                                                name="email"
+                                                                placeholder="Email Address"
+                                                                value=""
+                                                            >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-item vertical">
+                                                        <label class="mb-2 form-label">Password</label>
+                                                        <div>
+                                                            <span class="input-wrapper">
+                                                                <input
+                                                                    class="pr-8 input"
+                                                                    type="password"
+                                                                    name="password"
+                                                                    placeholder="Password"
+                                                                >
+                                                                <div class="input-suffix-end">
+                                                                    <span class="text-xl cursor-pointer">
+                                                                        <svg
+                                                                            stroke="currentColor"
+                                                                            fill="none"
+                                                                            stroke-width="2"
+                                                                            viewBox="0 0 24 24"
+                                                                            aria-hidden="true"
+                                                                            height="1em"
+                                                                            width="1em"
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                        >
+                                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>
+                                                                        </svg>
+                                                                    </span>
+                                                                </div>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex justify-between mb-6">
+                                                        <label class="mb-0 checkbox-label">
+                                                            <input class="checkbox" type="checkbox" value="true" checked>
+                                                            <span class="ltr:ml-2 rtl:mr-2">Remember Me</span>
+                                                        </label>
+                                                        <a class="text-primary-600 hover:underline" href="#">Forgot Password?</a>
+                                                    </div>
+                                                    <button class="w-full btn btn-solid" type="submit">Sign In</button>
+                                                    <div class="mt-4 text-center">
+                                                        <span>Don't have an account yet?</span>
+                                                        <a class="text-primary-600 hover:underline" href="{{ url('register') }}">Sign up</a>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-col justify-between hidden col-span-2 px-16 py-6 bg-[#4f46e5] bg-no-repeat bg-cover dark:bg-gray-800 lg:flex" style="background-image: url({{ asset('img/auth/register.jpg') }});">
+                                    <div class="logo">
+                                        <h2 class="text-white">ACCREDITATION</h2>
+                                    </div>
+                                    <div>
+                                        <h3 class="mb-4 text-white">Welcome</h3>
+                                        <p class="text-lg text-white opacity-80 max-w-[700px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto soluta eum commodi non temporibus saepe! Dicta error culpa alias, maxime dolores fugit accusamus beatae recusandae dolor, quod voluptates perferendis quaerat?</p>
+                                    </div>
+                                    <span class="text-white">
+                                        Copyright © 2024
+                                        <span class="font-semibold">Accredition</span>
                                     </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+                    </main>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-@endsection
+        <script src="{{ asset('js/vendors.min.js') }}"></script>
+        <script src="{{ asset('js/app.min.js') }}"></script>
+    </body>
+</html>
