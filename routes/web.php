@@ -1,9 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
+
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\PagesController::class, 'dashboard'])->name('dashboard');
+Route::middleware(['auth', 'role:Admin,Institution,Company'])->group(function () {
+    Route::get('/dashboard', [App\Http\Controllers\PagesController::class, 'dashboard'])->name('dashboard');
+});
