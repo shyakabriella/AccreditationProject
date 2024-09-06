@@ -5,15 +5,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="shortcut icon" href="img/favicon.ico">
-		<title>Elstar - HTML Tailwind Admin Template</title>
-
-		<!-- Core CSS -->
+		<title>Accreditation - Sign Up</title>
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 	</head>
 	<body>
-		<!-- App Start-->
 		<div id="root">
-			<!-- App Layout-->
 			<div class="app-layout-blank flex flex-auto flex-col h-[100vh]">
                 <div class="flex flex-col justify-between flex-auto h-full">
                     <main class="h-full">
@@ -142,19 +138,9 @@
                         </div>
                     </main>
                 </div>
-
 			</div>
 		</div>
-
-		<!-- Core Vendors JS -->
 		<script src="{{ asset('js/vendors.min.js') }}"></script>
-
-		<!-- Other Vendors JS -->
-
-		<!-- Page js -->
-
-		<!-- Core JS -->
 		<script src="{{ asset('js/app.min.js') }}"></script>
 	</body>
-
 </html>
