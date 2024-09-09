@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Trainee;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -43,17 +44,30 @@ class PagesController extends Controller
         $user = auth()->user();
         $trainee = $user->trainee;
 
+        // Update user details
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
         ]);
 
-        $trainee->update([
-            'date_of_birth' => $request->date_of_birth,
-            'address' => $request->address,
-            'phone' => $request->phone,
-            'education_level' => $request->education_level,
-        ]);
+        // If no trainee profile exists, create a new one
+        if (!$trainee) {
+            $trainee = Trainee::create([
+                'user_id' => $user->id,
+                'date_of_birth' => $request->date_of_birth,
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'education_level' => $request->education_level,
+            ]);
+        } else {
+            // If trainee exists, update the trainee details
+            $trainee->update([
+                'date_of_birth' => $request->date_of_birth,
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'education_level' => $request->education_level,
+            ]);
+        }
 
         return redirect()->route('getTraineeProfile')->with('success', 'Profile updated successfully.');
     }

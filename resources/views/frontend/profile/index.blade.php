@@ -37,8 +37,8 @@
                     @foreach ($applications as $application)
                         <div class="flex mt-6">
                             <div class="ms-4">
-                                <h5 class="mb-0 text-lg font-medium">{{ optional($application->trainingProgram)->name ?? 'Unknown' }}</h5>
-                                <span class="text-slate-400 company-university">{{ optional($application->institution)->name ?? 'Unknown' }}</span>
+                                <h5 class="mb-0 text-lg font-medium">{{ $application->trainingProgram->name ?? 'Unknown' }}</h5>
+                                <span class="text-slate-400 company-university">{{ $application->institution->name ?? 'Unknown' }}</span>
                                 <p class="mt-2 mb-0 text-slate-400">Application Date: {{ $application->application_date ?? 'Unknown' }}</p>
                                 <p class="mt-2 mb-0 text-slate-400">Status: {{ $application->status ?? 'Unknown' }}</p>
                             </div>
@@ -56,19 +56,19 @@
                             </li>
                             <li class="flex items-center justify-between mt-3 font-medium">
                                 <span><i data-feather="gift" class="inline size-4 text-slate-400 me-3"></i><span class="text-slate-400 me-3">D.O.B. :</span></span>
-                                <span>{{ optional($trainee)->date_of_birth ?? 'Unknown' }}</span>
+                                <span>{{ $trainee->date_of_birth ?? 'Unknown' }}</span>
                             </li>
                             <li class="flex items-center justify-between mt-3 font-medium">
                                 <span><i data-feather="home" class="inline size-4 text-slate-400 me-3"></i><span class="text-slate-400 me-3">Address :</span></span>
-                                <span>{{ optional($trainee)->address ?? 'Unknown' }}</span>
+                                <span>{{ $trainee->address ?? 'Unknown' }}</span>
                             </li>
                             <li class="flex items-center justify-between mt-3 font-medium">
                                 <span><i data-feather="phone" class="inline size-4 text-slate-400 me-3"></i><span class="text-slate-400 me-3">Mobile :</span></span>
-                                <span>{{ optional($trainee)->phone ?? 'Unknown' }}</span>
+                                <span>{{ $trainee->phone ?? 'Unknown' }}</span>
                             </li>
                             <li class="flex items-center justify-between mt-3 font-medium">
                                 <span><i data-feather="book" class="inline size-4 text-slate-400 me-3"></i><span class="text-slate-400 me-3">Education Level :</span></span>
-                                <span>{{ optional($trainee)->education_level ?? 'Unknown' }}</span>
+                                <span>{{ $trainee->education_level ?? 'Unknown' }}</span>
                             </li>
                         </ul>
                     </div>
