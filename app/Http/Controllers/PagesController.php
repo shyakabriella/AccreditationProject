@@ -32,10 +32,14 @@ class PagesController extends Controller
         return view('frontend.profile.index', compact('user', 'trainee', 'applications'));
     }
 
-    public function editTraineeProfile()
+    public function editTraineeProfile($id)
     {
-        $user = auth()->user();
+        $user = User::findOrFail($id); // Retrieve user by ID
         $trainee = $user->trainee;
+
+        if (!$trainee) {
+            return redirect()->route('getTraineeProfile', $id)->with('error', 'Trainee profile not found.');
+        }
 
         return view('frontend.profile.edit', compact('user', 'trainee'));
     }
