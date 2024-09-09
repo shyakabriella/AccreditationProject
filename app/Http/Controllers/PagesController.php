@@ -11,6 +11,11 @@ class PagesController extends Controller
         return view('frontend.index');
     }
 
+    public function getTrades()
+    {
+        return view('frontend.trades.index');
+    }
+
     public function dashboard()
     {
         return view('backend.dashboard');

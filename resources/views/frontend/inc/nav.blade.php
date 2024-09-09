@@ -76,7 +76,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('home') }}" class="sub-menu-item">
+                    <a href="{{ url('trades') }}" class="sub-menu-item">
                         Trades
                     </a>
                 </li>
