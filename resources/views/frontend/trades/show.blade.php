@@ -11,8 +11,8 @@
 
         <div class="absolute z-10 mx-3 text-center bottom-5 start-0 end-0">
             <ul class="breadcrumb tracking-[0.5px] breadcrumb-light mb-0 inline-block">
-            <li class="inline breadcrumb-item text-[15px] font-semibold duration-500 ease-in-out text-white/50 hover:text-white"><a href="{{ url('home') }}">Jobstack</a></li>
-            <li class="inline breadcrumb-item text-[15px] font-semibold duration-500 ease-in-out text-white/50 hover:text-white"><a href="{{ url('trades') }}">Jobs</a></li>
+            <li class="inline breadcrumb-item text-[15px] font-semibold duration-500 ease-in-out text-white/50 hover:text-white"><a href="{{ route('home') }}">Jobstack</a></li>
+            <li class="inline breadcrumb-item text-[15px] font-semibold duration-500 ease-in-out text-white/50 hover:text-white"><a href="{{ route('trades') }}">Jobs</a></li>
                 <li class="inline breadcrumb-item text-[15px] font-semibold duration-500 ease-in-out text-white" aria-current="page">Job Detail</li>
             </ul>
         </div>

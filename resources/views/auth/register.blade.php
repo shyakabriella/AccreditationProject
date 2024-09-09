@@ -127,7 +127,7 @@
                                                     <button class="w-full btn btn-solid" type="submit">Sign Up</button>
                                                     <div class="mt-4 text-center">
                                                         <span>Already have an account?</span>
-                                                        <a class="text-primary-600 hover:underline" href="{{ url('login') }}">Sign In</a>
+                                                        <a class="text-primary-600 hover:underline" href="{{ route('login') }}">Sign In</a>
                                                     </div>
                                                 </div>
                                             </form>

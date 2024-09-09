@@ -13,7 +13,7 @@
                         <div class="md:col-span-9">
                             <ul class="space-x-3 text-center list-disc footer-list md:text-end">
                                 <li class="inline-block">
-                                    <a href="{{ url('home') }}" class="font-medium text-gray-300 duration-500 ease-in-out hover:text-gray-400">
+                                    <a href="{{ route('home') }}" class="font-medium text-gray-300 duration-500 ease-in-out hover:text-gray-400">
                                         Home
                                     </a>
                                 </li>

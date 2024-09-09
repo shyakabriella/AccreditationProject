@@ -76,7 +76,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('trades') }}" class="sub-menu-item">
+                    <a href="{{ route('getTrades') }}" class="sub-menu-item">
                         Trades
                     </a>
                 </li>
