@@ -15,16 +15,16 @@ class PagesController extends Controller
         return view('backend.dashboard');
     }
 
+    public function createTrainingProgram()
+    {
+        return view('backend.trainingPrograms.create');
+    }
+
     public function getTrainingPrograms()
     {
         $trainingPrograms = TrainingProgram::all();
 
         return view('backend.trainingPrograms.index', compact('trainingPrograms'));
-    }
-
-    public function createTrainingProgram()
-    {
-        return view('backend.trainingPrograms.create');
     }
 
     public function getProfile($id)
