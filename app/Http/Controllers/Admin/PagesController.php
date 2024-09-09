@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Institution;
+use Illuminate\Http\Request;
+use App\Models\TrainingProgram;
+use App\Http\Controllers\Controller;
 
 class PagesController extends Controller
 {
@@ -15,9 +16,11 @@ class PagesController extends Controller
     }
 
     public function getTrainingPrograms()
-    {
-        return view('backend.trainingPrograms.index');
-    }
+{
+    $trainingPrograms = TrainingProgram::all();
+
+    return view('backend.trainingPrograms.index', compact('trainingPrograms'));
+}
 
     public function getProfile($id)
     {
