@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('training_programs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('institution_id');
+            $table->string('name');
+            $table->string('source_of_competency')->nullable();
+            $table->integer('module_duration')->nullable();
+            $table->integer('number_of_trainees')->nullable();
+            $table->integer('training_duration')->nullable();
+            $table->string('entry_requirements')->nullable();
             $table->timestamps();
+
+            $table->foreign('institution_id')->references('id')->on('institutions')->onDelete('cascade');
         });
     }
 
