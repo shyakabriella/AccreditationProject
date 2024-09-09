@@ -21,8 +21,13 @@ class PagesController extends Controller
         return view('frontend.trades.show');
     }
 
-    public function getProfile()
+    public function getTraineeProfile()
     {
         return view('frontend.profile.index');
+    }
+
+    public function editTraineeProfile()
+    {
+        return view('frontend.profile.edit');
     }
 }

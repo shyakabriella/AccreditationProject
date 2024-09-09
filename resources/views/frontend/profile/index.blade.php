@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-        </div><!--end -->
+        </div>
     </section>
 
     <section class="relative pb-16 mt-12 md:pb-24">
@@ -35,7 +35,7 @@
                 <div class="lg:col-span-8 md:col-span-7">
                     <h5 class="text-xl font-semibold">Calvin Carlo</h5>
                     <p class="mt-4 text-slate-400">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum cumque magnam molestiae fugiat impedit totam dolorem officiis, assumenda illum laborum quisquam, dignissimos odio nobis a. Doloremque laboriosam accusamus impedit vero?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elite Voluptatum cumque magnam molestiae fugiat impedit totam dolorem officiis, assumenda illum laborum quisquam, dignissimos odio nobis a. Doloremque laboriosam accusamus impedit vero?
                     </p>
 
                     <h4 class="mt-6 text-xl font-semibold">Application :</h4>
