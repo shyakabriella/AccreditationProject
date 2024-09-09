@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="shortcut icon" href="img/favicon.ico">
         <title>Accreditation - Sign Up</title>
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/style.css') }}">
     </head>
     <body>
         <div id="root">
@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flex-col justify-between hidden col-span-2 px-16 py-6 bg-[#4f46e5] bg-no-repeat bg-cover dark:bg-gray-800 lg:flex" style="background-image: url({{ asset('img/auth/register.jpg') }});">
+                                <div class="flex-col justify-between hidden col-span-2 px-16 py-6 bg-[#4f46e5] bg-no-repeat bg-cover dark:bg-gray-800 lg:flex" style="background-image: url({{ asset('backend/img/auth/register.jpg') }});">
                                     <div class="logo">
                                         <h2 class="text-white">ACCREDITATION</h2>
                                     </div>
@@ -102,7 +102,7 @@
                 </div>
             </div>
         </div>
-        <script src="{{ asset('js/vendors.min.js') }}"></script>
-        <script src="{{ asset('js/app.min.js') }}"></script>
+        <script src="{{ asset('backend/js/vendors.min.js') }}"></script>
+        <script src="{{ asset('backend/js/app.min.js') }}"></script>
     </body>
 </html>
