@@ -54,6 +54,9 @@
             });
         </script>
         <script src="{{ asset('backend/js/vendors.min.js') }}"></script>
+        <script src="{{ asset('backend/vendors/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('backend/vendors/datatables/dataTables.custom-ui.min.js') }}"></script>
+        <script src="{{ asset('backend/js/product-list.js') }}"></script>
         <script src="{{ asset('backend/js/app.min.js') }}"></script>
     </body>
 </html>
