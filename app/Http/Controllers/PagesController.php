@@ -44,9 +44,9 @@ class PagesController extends Controller
         return view('frontend.profile.edit', compact('user', 'trainee'));
     }
 
-    public function updateTraineeProfile(Request $request)
+    public function updateTraineeProfile(Request $request, $id)
     {
-        $user = auth()->user();
+        $user = User::findOrFail($id); // Retrieve user by ID
         $trainee = $user->trainee;
 
         // Update user details
@@ -55,7 +55,7 @@ class PagesController extends Controller
             'email' => $request->email,
         ]);
 
-        // If no trainee profile exists, create a new one
+        // If no trainee profile exists, create one
         if (!$trainee) {
             $trainee = Trainee::create([
                 'user_id' => $user->id,
@@ -65,7 +65,7 @@ class PagesController extends Controller
                 'education_level' => $request->education_level,
             ]);
         } else {
-            // If trainee exists, update the trainee details
+            // Update trainee details
             $trainee->update([
                 'date_of_birth' => $request->date_of_birth,
                 'address' => $request->address,
@@ -74,6 +74,6 @@ class PagesController extends Controller
             ]);
         }
 
-        return redirect()->route('getTraineeProfile')->with('success', 'Profile updated successfully.');
+        return redirect()->route('getTraineeProfile', $id)->with('success', 'Profile updated successfully.');
     }
 }
