@@ -1,6 +1,6 @@
 <nav id="topnav" class="defaultscroll is-sticky">
     <div class="container">
-        <a class="logo" href="{{ url('home') }}">
+        <a class="logo" href="{{ route('home') }}">
             <div class="block sm:hidden">
                 {{-- <img src="assets/images/logo-icon-40.png" class="inline-block h-10 dark:hidden"  alt="">
                 <img src="assets/images/logo-icon-40-white.png" class="hidden h-10 dark:inline-block"  alt=""> --}}
@@ -66,22 +66,22 @@
         <div id="navigation">
             <ul class="justify-end navigation-menu">
                 <li>
-                    <a href="{{ url('home') }}" class="sub-menu-item">
+                    <a href="{{ route('home') }}" class="sub-menu-item">
                         Home
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('home') }}" class="sub-menu-item">
+                    <a href="{{ route('home') }}" class="sub-menu-item">
                         About
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('trades') }}" class="sub-menu-item">
+                    <a href="{{ route('trades') }}" class="sub-menu-item">
                         Trades
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('home') }}" class="sub-menu-item">
+                    <a href="{{ route('home') }}" class="sub-menu-item">
                         Contacts
                     </a>
                 </li>
