@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('program_applicants', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('trainee_id');
+            $table->unsignedBigInteger('training_program_id');
+            $table->unsignedBigInteger('institution_id');
+            $table->date('application_date')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
+
+            $table->foreign('trainee_id')->references('id')->on('trainees')->onDelete('cascade');
+            $table->foreign('training_program_id')->references('id')->on('training_programs')->onDelete('cascade');
+            $table->foreign('institution_id')->references('id')->on('institutions')->onDelete('cascade');
         });
     }
 
