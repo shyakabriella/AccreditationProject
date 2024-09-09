@@ -26,7 +26,8 @@ Route::middleware(['auth', 'role:company'])->group(function () {
 });
 
 
-Route::middleware(['auth', 'role:admin,user'])->group(function () {
+Route::middleware(['auth', 'role:company,user'])->group(function () {
     Route::get('/profile', [App\Http\Controllers\PagesController::class, 'getTraineeProfile'])->name('getTraineeProfile');
     Route::get('/profile/edit', [App\Http\Controllers\PagesController::class, 'editTraineeProfile'])->name('editTraineeProfile');
+    Route::post('/profile/update', [App\Http\Controllers\PagesController::class, 'updateTraineeProfile'])->name('updateTraineeProfile');
 });

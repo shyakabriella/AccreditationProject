@@ -23,11 +23,38 @@ class PagesController extends Controller
 
     public function getTraineeProfile()
     {
-        return view('frontend.profile.index');
+        $user = auth()->user();
+        $trainee = $user->trainee; // Retrieve the trainee relation
+        $applications = $trainee ? $trainee->programApplicants : collect(); // Return empty collection if trainee is null
+
+        return view('frontend.profile.index', compact('user', 'trainee', 'applications'));
     }
 
     public function editTraineeProfile()
     {
-        return view('frontend.profile.edit');
+        $user = auth()->user();
+        $trainee = $user->trainee;
+
+        return view('frontend.profile.edit', compact('user', 'trainee'));
+    }
+
+    public function updateTraineeProfile(Request $request)
+    {
+        $user = auth()->user();
+        $trainee = $user->trainee;
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        $trainee->update([
+            'date_of_birth' => $request->date_of_birth,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'education_level' => $request->education_level,
+        ]);
+
+        return redirect()->route('getTraineeProfile')->with('success', 'Profile updated successfully.');
     }
 }

@@ -1,6 +1,5 @@
 @extends('frontend.layouts.app')
 @section('content')
-
     <section class="relative lg:mt-24 mt-[74px]">
         <div class="lg:container container-fluid">
             <div class="relative shrink-0">
@@ -13,8 +12,8 @@
                         <div class="relative flex items-end">
                             <img src="https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" class="rounded-full shadow size-28 dark:shadow-gray-800 ring-4 ring-slate-50 dark:ring-slate-800" alt="">
                             <div class="ms-4">
-                                <h5 class="text-lg font-semibold">Mr. Calvin carlo</h5>
-                                <p class="text-slate-400">Web Designer</p>
+                                <h5 class="text-lg font-semibold">{{ $user->name }}</h5>
+                                <p class="text-slate-400">Trainner</p>
                             </div>
                         </div>
 
@@ -33,24 +32,18 @@
         <div class="container">
             <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px]">
                 <div class="lg:col-span-8 md:col-span-7">
-                    <h5 class="text-xl font-semibold">Calvin Carlo</h5>
-                    <p class="mt-4 text-slate-400">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elite Voluptatum cumque magnam molestiae fugiat impedit totam dolorem officiis, assumenda illum laborum quisquam, dignissimos odio nobis a. Doloremque laboriosam accusamus impedit vero?
-                    </p>
+                    <h4 class="mt-6 text-xl font-semibold">Applications :</h4>
 
-                    <h4 class="mt-6 text-xl font-semibold">Application :</h4>
-
-                    <div class="flex mt-6">
-                        <div class="text-slate-400 font-semibold min-w-[80px] text-center">
-                            <img src="assets/images/company/shree-logo.png" class="block mx-auto mb-2 size-16" alt=""> 2019-22
+                    @foreach ($applications as $application)
+                        <div class="flex mt-6">
+                            <div class="ms-4">
+                                <h5 class="mb-0 text-lg font-medium">{{ optional($application->trainingProgram)->name ?? 'Unknown' }}</h5>
+                                <span class="text-slate-400 company-university">{{ optional($application->institution)->name ?? 'Unknown' }}</span>
+                                <p class="mt-2 mb-0 text-slate-400">Application Date: {{ $application->application_date ?? 'Unknown' }}</p>
+                                <p class="mt-2 mb-0 text-slate-400">Status: {{ $application->status ?? 'Unknown' }}</p>
+                            </div>
                         </div>
-
-                        <div class="ms-4">
-                            <h5 class="mb-0 text-lg font-medium">Full Stack Developer</h5>
-                            <span class="text-slate-400 company-university">Shreethemes - India</span>
-                            <p class="mt-2 mb-0 text-slate-400">It seems that only fragments of the original text remain in the Lorem Ipsum texts used today. One may speculate that over the course of time certain letters were added or deleted at various positions within the text. </p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
 
                 <div class="lg:col-span-4 md:col-span-5">
@@ -58,39 +51,24 @@
                         <h5 class="text-lg font-semibold">Personal Detail:</h5>
                         <ul class="mt-4 list-none">
                             <li class="flex items-center justify-between mt-3 font-medium">
-                                <span><i data-feather="mail" class="inline size-4 text-slate-400 me-3"></i><span class="text-slate-400 me-3">Email  :</span></span>
-
-                                <span>thomas@mail.com</span>
+                                <span><i data-feather="mail" class="inline size-4 text-slate-400 me-3"></i><span class="text-slate-400 me-3">Email :</span></span>
+                                <span>{{ $user->email }}</span>
                             </li>
                             <li class="flex items-center justify-between mt-3 font-medium">
                                 <span><i data-feather="gift" class="inline size-4 text-slate-400 me-3"></i><span class="text-slate-400 me-3">D.O.B. :</span></span>
-
-                                <span>31st Dec, 1996</span>
+                                <span>{{ optional($trainee)->date_of_birth ?? 'Unknown' }}</span>
                             </li>
                             <li class="flex items-center justify-between mt-3 font-medium">
                                 <span><i data-feather="home" class="inline size-4 text-slate-400 me-3"></i><span class="text-slate-400 me-3">Address :</span></span>
-
-                                <span>15 Razy street</span>
-                            </li>
-                            <li class="flex items-center justify-between mt-3 font-medium">
-                                <span><i data-feather="map-pin" class="inline size-4 text-slate-400 me-3"></i><span class="text-slate-400 me-3">City :</span></span>
-
-                                <span>London</span>
-                            </li>
-                            <li class="flex items-center justify-between mt-3 font-medium">
-                                <span><i data-feather="globe" class="inline size-4 text-slate-400 me-3"></i><span class="text-slate-400 me-3">Country :</span></span>
-
-                                <span>UK</span>
-                            </li>
-                            <li class="flex items-center justify-between mt-3 font-medium">
-                                <span><i data-feather="server" class="inline size-4 text-slate-400 me-3"></i><span class="text-slate-400 me-3">Postal Code :</span></span>
-
-                                <span>521452</span>
+                                <span>{{ optional($trainee)->address ?? 'Unknown' }}</span>
                             </li>
                             <li class="flex items-center justify-between mt-3 font-medium">
                                 <span><i data-feather="phone" class="inline size-4 text-slate-400 me-3"></i><span class="text-slate-400 me-3">Mobile :</span></span>
-
-                                <span>(+125) 1542-8452</span>
+                                <span>{{ optional($trainee)->phone ?? 'Unknown' }}</span>
+                            </li>
+                            <li class="flex items-center justify-between mt-3 font-medium">
+                                <span><i data-feather="book" class="inline size-4 text-slate-400 me-3"></i><span class="text-slate-400 me-3">Education Level :</span></span>
+                                <span>{{ optional($trainee)->education_level ?? 'Unknown' }}</span>
                             </li>
                         </ul>
                     </div>
@@ -98,5 +76,4 @@
             </div>
         </div>
     </section>
-
 @endsection

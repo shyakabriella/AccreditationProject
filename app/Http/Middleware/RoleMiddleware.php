@@ -22,9 +22,9 @@ class RoleMiddleware
 
         $user = Auth::user();
 
-        if ($user->role === 'user') {
-            return redirect('/');
-        }
+        // if ($user->role === 'user') {
+        //     return redirect('/');
+        // }
 
         foreach ($roles as $role) {
             if ($user->role === $role) {
