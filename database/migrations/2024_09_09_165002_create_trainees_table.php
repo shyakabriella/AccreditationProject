@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('trainees', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->date('date_of_birth')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->string('education_level')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
