@@ -22,8 +22,8 @@
                                     <div class="font-semibold">Institution Name, Type & Physical Address</div>
                                     <div class="col-span-2">
                                         <div class="flex">
-                                            <input class="input pl-8" type="text" name="name" autocomplete="off" placeholder="Institution Name" value="{{ old('name', $institution->name) }}">
-                                            <input class="input pl-8" type="text" name="type" autocomplete="off" placeholder="Institution Type" value="{{ old('type', $institution->type) }}">
+                                            <input class="input pl-8" type="text" name="name" autocomplete="off" placeholder="Institution Name" value="{{ old('name', $institution->name ?? Auth::user()->name) }}">
+                                            <input class="input pl-8" type="text" name="type" autocomplete="off" placeholder="Institution Type" value="{{ old('type', $institution->type ?? Auth::user()->email) }}">
                                             <input class="input pl-8" type="text" name="physical_address" autocomplete="off" placeholder="Physical Address" value="{{ old('physical_address', $institution->physical_address) }}">
                                     </div>
                                     </div>
