@@ -34,11 +34,19 @@
                     <div class="absolute z-10 hidden m-0 mt-4 overflow-hidden bg-white rounded-md shadow dropdown-menu end-0 w-44 dark:bg-slate-900 dark:shadow-gray-700" onclick="event.stopPropagation();">
                         <ul class="py-2 text-start">
                             <li>
-                                <a href="{{ route('getTraineeProfile', auth()->user()->id) }}" class="flex items-center px-4 py-2 font-medium dark:text-white/70 hover:text-emerald-600 dark:hover:text-white">
-                                    <i data-feather="user" class="size-4 me-2"></i>
-                                    Profile
-                                </a>
+                                @if (auth()->user()->role === 'user')
+                                    <a href="{{ route('getTraineeProfile', auth()->user()->id) }}" class="flex items-center px-4 py-2 font-medium dark:text-white/70 hover:text-emerald-600 dark:hover:text-white">
+                                        <i data-feather="user" class="size-4 me-2"></i>
+                                        Profile
+                                    </a>
+                                @else
+                                    <a href="{{ route('dashboard') }}" class="flex items-center px-4 py-2 font-medium dark:text-white/70 hover:text-emerald-600 dark:hover:text-white">
+                                        <i data-feather="user" class="size-4 me-2"></i>
+                                        Dashboard
+                                    </a>
+                                @endif
                             </li>
+
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="flex items-center px-4 py-2 font-medium dark:text-white/70 hover:text-emerald-600 dark:hover:text-white">
                                     <i data-feather="log-out" class="size-4 me-2"></i>
