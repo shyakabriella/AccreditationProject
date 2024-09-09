@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('institution_id');
+            $table->string('name');
+            $table->string('position')->nullable();
+            $table->string('qualification')->nullable();
+            $table->string('availability')->nullable();
             $table->timestamps();
+
+            $table->foreign('institution_id')->references('id')->on('institutions')->onDelete('cascade');
         });
     }
 
