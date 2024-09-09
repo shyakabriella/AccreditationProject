@@ -25,16 +25,22 @@ class PagesController extends Controller
 
     public function getTraineeProfile($id)
     {
-        $user = User::findOrFail($id); // Retrieve user by ID
-        $trainee = $user->trainee; // Get the trainee relation
-        $applications = $trainee ? $trainee->programApplicants : collect(); // Retrieve applications or an empty collection if no trainee
+        $user = User::with('trainee')->findOrFail($id); // Eager load the trainee relationship
+        $trainee = $user->trainee;
+
+        if (!$trainee) {
+            // Optionally, handle the case where no trainee profile exists
+            return redirect()->back()->with('error', 'Trainee profile not found for this user.');
+        }
+
+        $applications = $trainee->programApplicants;
 
         return view('frontend.profile.index', compact('user', 'trainee', 'applications'));
     }
 
     public function editTraineeProfile($id)
     {
-        $user = User::findOrFail($id); // Retrieve user by ID
+        $user = User::findOrFail($id);
         $trainee = $user->trainee;
 
         if (!$trainee) {
@@ -46,7 +52,7 @@ class PagesController extends Controller
 
     public function updateTraineeProfile(Request $request, $id)
     {
-        $user = User::findOrFail($id); // Retrieve user by ID
+        $user = User::findOrFail($id);
         $trainee = $user->trainee;
 
         // Update user details
