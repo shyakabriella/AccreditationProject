@@ -8,6 +8,7 @@ class Institution extends Model
 {
     protected $fillable = [
         'name',
+        'user_id',
         'type',
         'physical_address',
         'province',
@@ -29,6 +30,11 @@ class Institution extends Model
         'mission',
         'objectives',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function trainingPrograms()
     {

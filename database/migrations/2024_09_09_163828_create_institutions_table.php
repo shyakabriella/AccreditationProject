@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('institutions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->unsignedBigInteger('user_id');
             $table->string('type')->nullable();
             $table->string('physical_address')->nullable();
             $table->string('province')->nullable();
@@ -35,6 +36,8 @@ return new class extends Migration
             $table->text('mission')->nullable();
             $table->text('objectives')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
