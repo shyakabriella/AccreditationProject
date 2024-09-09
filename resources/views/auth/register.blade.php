@@ -149,6 +149,32 @@
                 </div>
 			</div>
 		</div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                @if (session('success'))
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: '{{ session('success') }}',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        toast: true
+                    });
+                @endif
+
+                @if (session('error'))
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: '{{ session('error') }}',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        toast: true
+                    });
+                @endif
+            });
+        </script>
 		<script src="{{ asset('backend/js/vendors.min.js') }}"></script>
 		<script src="{{ asset('backend/js/app.min.js') }}"></script>
 	</body>
