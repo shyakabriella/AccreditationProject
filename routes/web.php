@@ -26,6 +26,6 @@ Route::middleware(['auth', 'role:company'])->group(function () {
 });
 
 
-Route::middleware(['auth', 'role:user'])->group(function () {
-    //
+Route::middleware(['auth', 'role:admin,user'])->group(function () {
+    Route::get('/profile', [App\Http\Controllers\PagesController::class, 'getProfile'])->name('getProfile');
 });

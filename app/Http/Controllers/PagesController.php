@@ -20,4 +20,9 @@ class PagesController extends Controller
     {
         return view('frontend.trades.show');
     }
+
+    public function getProfile()
+    {
+        return view('frontend.profile.index');
+    }
 }
