@@ -12,6 +12,7 @@ Route::get('/trade/show', [App\Http\Controllers\PagesController::class, 'getTrad
 Route::middleware(['auth', 'role:admin,institution,company'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\PagesController::class, 'dashboard'])->name('dashboard');
     Route::get('/{id}', [App\Http\Controllers\Admin\PagesController::class, 'getProfile'])->name('getProfile');
+    Route::post('/update/{id}', [App\Http\Controllers\Admin\PagesController::class, 'updateInstitutionProfile'])->name('updateInstitutionProfile');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
