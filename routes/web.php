@@ -10,5 +10,5 @@ Route::get('/trades', [App\Http\Controllers\PagesController::class, 'getTrades']
 Route::get('/trade/show', [App\Http\Controllers\PagesController::class, 'getTradeDetails'])->name('getTradeDetails');
 
 Route::middleware(['auth', 'role:admin,institution,company'])->group(function () {
-    Route::get('/dashboard', [App\Http\Controllers\PagesController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [App\Http\Controllers\Admin\PagesController::class, 'dashboard'])->name('dashboard');
 });
