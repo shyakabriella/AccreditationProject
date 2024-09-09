@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Trainee;
 use Illuminate\Http\Request;
 
@@ -22,11 +23,11 @@ class PagesController extends Controller
         return view('frontend.trades.show');
     }
 
-    public function getTraineeProfile()
+    public function getTraineeProfile($id)
     {
-        $user = auth()->user();
-        $trainee = $user->trainee; // Retrieve the trainee relation
-        $applications = $trainee ? $trainee->programApplicants : collect(); // Return empty collection if trainee is null
+        $user = User::findOrFail($id); // Retrieve user by ID
+        $trainee = $user->trainee; // Get the trainee relation
+        $applications = $trainee ? $trainee->programApplicants : collect(); // Retrieve applications or an empty collection if no trainee
 
         return view('frontend.profile.index', compact('user', 'trainee', 'applications'));
     }
