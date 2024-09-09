@@ -14,6 +14,11 @@ class PagesController extends Controller
         return view('backend.dashboard');
     }
 
+    public function getTrainingPrograms()
+    {
+        return view('backend.trainingPrograms.index');
+    }
+
     public function getProfile($id)
     {
         $user = User::with('institution')->findOrFail($id);
@@ -84,10 +89,5 @@ class PagesController extends Controller
 
         // Redirect with a success message
         return redirect()->route('dashboard', $id)->with('success', 'Institution profile updated successfully.');
-    }
-
-    public function getTrainingPrograms()
-    {
-        return view('backend.trainingPrograms.index');
     }
 }
