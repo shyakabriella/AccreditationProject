@@ -39,6 +39,15 @@
                                                 @csrf
                                                 <div class="form-container vertical">
                                                     <div class="form-item vertical">
+                                                        <label class="mb-2 form-label">Role</label>
+                                                        <div>
+                                                            <select class="input" name="role">
+                                                                <option value="user">User</option>
+                                                                <option value="institution">Institution</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-item vertical">
                                                         <label class="mb-2 form-label">Name</label>
                                                         <div>
                                                             <input
