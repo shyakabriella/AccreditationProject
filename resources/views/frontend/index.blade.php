@@ -1,4 +1,6 @@
 @extends('frontend.layouts.app')
 @section('content')
-    Hello World
+
+    @include('frontend.inc.hero')
+
 @endsection
