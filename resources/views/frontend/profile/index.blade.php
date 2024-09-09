@@ -18,7 +18,7 @@
                         </div>
 
                         <div class="">
-                            <a href="{{ route('editTraineeProfile') }}" class="rounded-full btn btn-icon bg-emerald-600/5 hover:bg-emerald-600 border-emerald-600/10 hover:border-emerald-600 text-emerald-600 hover:text-white">
+                            <a href="{{ route('editTraineeProfile', $user->id) }}" class="rounded-full btn btn-icon bg-emerald-600/5 hover:bg-emerald-600 border-emerald-600/10 hover:border-emerald-600 text-emerald-600 hover:text-white">
                                 <i data-feather="settings" class="size-4"></i>
                             </a>
                         </div>
