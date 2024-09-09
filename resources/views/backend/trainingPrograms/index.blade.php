@@ -21,43 +21,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="flex items-center">
-                                            <span class="avatar avatar-rounded avatar-md">
-                                                <img class="avatar-img avatar-rounded" src="img/products/product-1.jpg" loading="lazy">
-                                            </span>
-                                            <span class="ml-2 rtl:mr-2 font-semibold">Luminaire Giotto Headphones</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="capitalize">devices</span>
-                                    </td>
-                                    <td>46</td>
-                                    <td>
-                                        <div class="flex items-center gap-2">
-                                            <span class="badge-dot bg-emerald-500"></span>
-                                            <span class="capitalize font-semibold text-emerald-500">In Stock</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span>$252</span>
-                                    </td>
-                                    <td>
-                                        <div class="flex justify-end text-lg">
-                                            <span class="cursor-pointer p-2 hover:text-indigo-600">
-                                                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="cursor-pointer p-2 hover:text-red-500">
-                                                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                                </svg>
-                                            </span>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @foreach ($trainingPrograms as $program)
+                                    <tr>
+                                        <td>{{ $program->name }}</td>
+                                        <td>{{ $program->source_of_competency }}</td>
+                                        <td>{{ $program->module_duration }}</td>
+                                        <td>{{ $program->number_of_trainees }}</td>
+                                        <td>{{ $program->training_duration }}</td>
+                                        <td>{{ $program->entry_requirements }}</td>
+                                        <td>
+                                            <a href="{{ route('editTrainingProgram', $program->id) }}" class="btn btn-warning">Edit</a>
+                                            <form action="{{ route('deleteTrainingProgram', $program->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
