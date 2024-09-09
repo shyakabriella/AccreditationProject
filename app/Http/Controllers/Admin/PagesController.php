@@ -88,6 +88,6 @@ class PagesController extends Controller
 
     public function getTrainingPrograms()
     {
-        return view('backend.training-programs.index');
+        return view('backend.trainingPrograms.index');
     }
 }
