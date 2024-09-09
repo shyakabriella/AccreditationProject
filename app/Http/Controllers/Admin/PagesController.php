@@ -85,4 +85,9 @@ class PagesController extends Controller
         // Redirect with a success message
         return redirect()->route('dashboard', $id)->with('success', 'Institution profile updated successfully.');
     }
+
+    public function getTrainingPrograms()
+    {
+        return view('backend.training-programs.index');
+    }
 }
