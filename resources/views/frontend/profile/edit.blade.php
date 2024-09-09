@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-    </div><!--end -->
+    </div>
 
     <div class="container mt-16">
         <div class="grid lg:grid-cols-12 grid-cols-1 gap-[30px]">
