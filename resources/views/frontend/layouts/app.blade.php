@@ -22,6 +22,7 @@
         <link href="{{ asset('frontend/libs/@iconscout/unicons/css/line.css') }}" type="text/css" rel="stylesheet">
         <link href="{{ asset('frontend/libs/@mdi/font/css/materialdesignicons.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('frontend/css/tailwind.min.css') }}" rel="stylesheet" type="text/css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     </head>
 
@@ -33,6 +34,32 @@
         @include('frontend.inc.footer')
 
         <a href="#" onclick="topFunction()" id="back-to-top" class="fixed z-10 items-center justify-center hidden text-lg text-center text-white rounded-full back-to-top bottom-5 end-5 size-9 bg-emerald-600"><i class="uil uil-arrow-up"></i></a>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                @if (session('success'))
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: '{{ session('success') }}',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        toast: true
+                    });
+                @endif
+
+                @if (session('error'))
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: '{{ session('error') }}',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        toast: true
+                    });
+                @endif
+            });
+        </script>
 
         <script src="{{ asset('frontend/libs/tobii/js/tobii.min.js') }}"></script>
         <script src="{{ asset('frontend/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
