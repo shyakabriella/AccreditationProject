@@ -16,11 +16,16 @@ class PagesController extends Controller
     }
 
     public function getTrainingPrograms()
-{
-    $trainingPrograms = TrainingProgram::all();
+    {
+        $trainingPrograms = TrainingProgram::all();
 
-    return view('backend.trainingPrograms.index', compact('trainingPrograms'));
-}
+        return view('backend.trainingPrograms.index', compact('trainingPrograms'));
+    }
+
+    public function createTrainingProgram()
+    {
+        return view('backend.trainingPrograms.create');
+    }
 
     public function getProfile($id)
     {
