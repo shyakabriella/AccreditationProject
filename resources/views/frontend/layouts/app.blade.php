@@ -26,6 +26,8 @@
     </head>
 
     <body class="dark:bg-slate-900">
+        @include('frontend.inc.nav')
+
         @yield('content')
 
         <a href="#" onclick="topFunction()" id="back-to-top" class="fixed z-10 items-center justify-center hidden text-lg text-center text-white rounded-full back-to-top bottom-5 end-5 size-9 bg-emerald-600"><i class="uil uil-arrow-up"></i></a>
