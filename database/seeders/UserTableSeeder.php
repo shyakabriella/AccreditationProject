@@ -33,5 +33,12 @@ class UserTableSeeder extends Seeder
             'role' => 'company',
             'password' => bcrypt('company@company.com'),
         ]);
+
+        User::create([
+            'name' => 'User',
+            'email' => 'user@user.com',
+            'role' => 'user',
+            'password' => bcrypt('user@user.com'),
+        ]);
     }
 }
