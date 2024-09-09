@@ -35,7 +35,7 @@
                 <div class="lg:col-span-12">
                     <div class="p-6 bg-white rounded-md shadow dark:shadow-gray-800 dark:bg-slate-900">
                         <h5 class="mb-4 text-lg font-semibold">Personal Detail :</h5>
-                        <form action="{{ route('updateTraineeProfile') }}" method="POST">
+                        <form action="{{ route('updateTraineeProfile', $user->id) }}" method="POST">
                             @csrf
                             <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 md:grid-cols-2">
                                 <div class="lg:col-span-6">
