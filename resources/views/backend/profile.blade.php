@@ -10,7 +10,7 @@
             <div class="card-body">
                 <div class="tabs">
                     <div class="tab-content px-4 py-6">
-                        <form action="{{ route('institution.update', $institution->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('institutionUpdateProfile', $institution->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="form-container vertical">
