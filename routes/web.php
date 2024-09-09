@@ -12,6 +12,11 @@ Route::get('/trade/show', [App\Http\Controllers\PagesController::class, 'getTrad
 Route::middleware(['auth', 'role:admin,institution,company'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\PagesController::class, 'dashboard'])->name('dashboard');
     Route::get('/training-programs', [App\Http\Controllers\Admin\PagesController::class, 'getTrainingPrograms'])->name('getTrainingPrograms');
+    Route::get('/training-programs/create', [App\Http\Controllers\Admin\PagesController::class, 'createTrainingProgram'])->name('createTrainingProgram');
+    Route::post('/training-programs', [App\Http\Controllers\Admin\PagesController::class, 'storeTrainingProgram'])->name('storeTrainingProgram');
+    Route::get('/training-programs/{id}/edit', [App\Http\Controllers\Admin\PagesController::class, 'editTrainingProgram'])->name('editTrainingProgram');
+    Route::post('/training-programs/{id}', [App\Http\Controllers\Admin\PagesController::class, 'updateTrainingProgram'])->name('updateTrainingProgram');
+    Route::delete('/training-programs/{id}', [App\Http\Controllers\Admin\PagesController::class, 'deleteTrainingProgram'])->name('deleteTrainingProgram');
     Route::get('/{id}', [App\Http\Controllers\Admin\PagesController::class, 'getProfile'])->name('getProfile');
     Route::post('/update/{id}', [App\Http\Controllers\Admin\PagesController::class, 'updateInstitutionProfile'])->name('updateInstitutionProfile');
 
