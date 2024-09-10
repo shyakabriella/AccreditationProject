@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Module;
 use App\Models\Institution;
 use Illuminate\Http\Request;
 use App\Models\TrainingProgram;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PagesController extends Controller
 {
@@ -86,23 +88,66 @@ class PagesController extends Controller
 
     public function updateTrainingProgram(Request $request, $id)
     {
-        $validatedData = $request->validate([
+        // Validate incoming data
+        $request->validate([
             'name' => 'required|string|max:255',
             'source_of_competency' => 'nullable|string|max:255',
-            'module_duration' => 'nullable|integer|min:0',
-            'number_of_trainees' => 'nullable|integer|min:0',
-            'training_duration' => 'nullable|integer|min:0',
+            'module_duration' => 'nullable|numeric',
+            'number_of_trainees' => 'nullable|numeric',
+            'training_duration' => 'nullable|numeric',
             'entry_requirements' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'modules.*.module_name' => 'nullable|string|max:255',
+            'modules.*.module_duration' => 'nullable|numeric',
         ]);
 
+        // Retrieve the training program to update
         $trainingProgram = TrainingProgram::findOrFail($id);
 
-        // $this->authorize('update', $trainingProgram);
+        // Update the basic fields
+        $trainingProgram->name = $request->input('name');
+        $trainingProgram->source_of_competency = $request->input('source_of_competency');
+        $trainingProgram->module_duration = $request->input('module_duration');
+        $trainingProgram->number_of_trainees = $request->input('number_of_trainees');
+        $trainingProgram->training_duration = $request->input('training_duration');
+        $trainingProgram->entry_requirements = $request->input('entry_requirements');
+        $trainingProgram->description = $request->input('description');
 
-        $trainingProgram->update($validatedData);
+        // Handle image upload if present
+        if ($request->hasFile('image')) {
+            // Delete the old image if exists
+            if ($trainingProgram->image && Storage::exists('public/' . $trainingProgram->image)) {
+                Storage::delete('public/' . $trainingProgram->image);
+            }
 
-        return redirect()->route('getTrainingPrograms')
-                        ->with('success', 'Training program updated successfully!');
+            // Store the new image and save the path
+            $path = $request->file('image')->store('program_images', 'public');
+            $trainingProgram->image = $path;
+        }
+
+        // Save the updated training program
+        $trainingProgram->save();
+
+        // Update the program modules
+        // First, delete existing modules
+        $trainingProgram->modules()->delete();
+
+        // Then recreate modules from the request
+        if ($request->has('modules')) {
+            foreach ($request->input('modules') as $moduleData) {
+                if (!empty($moduleData['module_name'])) {
+                    $module = new Module();
+                    $module->training_program_id = $trainingProgram->id;
+                    $module->module_name = $moduleData['module_name'];
+                    $module->module_duration = $moduleData['module_duration'] ?? null;
+                    $module->save();
+                }
+            }
+        }
+
+        // Redirect back with success message
+        return redirect()->route('admin.trainingPrograms.index')->with('success', 'Training Program updated successfully.');
     }
 
     public function deleteTrainingProgram($id)
