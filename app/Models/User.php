@@ -55,4 +55,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Institution::class);
     }
+
+    public function applications()
+    {
+        return $this->hasMany(TrainingProgramApplication::class);
+    }
 }

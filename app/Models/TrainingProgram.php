@@ -32,4 +32,9 @@ class TrainingProgram extends Model
     {
         return $this->hasMany(Module::class); // New relationship
     }
+
+    public function applications()
+    {
+        return $this->hasMany(TrainingProgramApplication::class);
+    }
 }
