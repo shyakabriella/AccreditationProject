@@ -45,7 +45,7 @@
                         </div>
 
                         <div class="grid items-center gap-4 py-4 md:grid-cols-3">
-                            <div class="font-semibold">Training Duration (hours)</div>
+                            <div class="font-semibold">Training Duration (months)</div>
                             <div class="col-span-2">
                                 <input class="pl-8 input" type="number" name="training_duration" placeholder="Training Duration" value="{{ old('training_duration') }}">
                             </div>
