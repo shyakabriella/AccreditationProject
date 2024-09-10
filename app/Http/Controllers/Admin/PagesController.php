@@ -34,7 +34,6 @@ class PagesController extends Controller
 
     public function storeTrainingProgram(Request $request)
     {
-        // Validate the incoming request
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'source_of_competency' => 'nullable|string|max:255',
@@ -42,27 +41,38 @@ class PagesController extends Controller
             'number_of_trainees' => 'nullable|integer|min:0',
             'training_duration' => 'nullable|integer|min:0',
             'entry_requirements' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048', // Image validation
+            'modules.*.module_name' => 'required|string|max:255',
+            'modules.*.module_duration' => 'required|integer|min:0',
         ]);
 
-        try {
-            // Create the training program and automatically assign the institution ID from the logged-in user
-            TrainingProgram::create([
-                'institution_id' => Auth::user()->institution->id,  // Assuming the user has an institution relationship
-                'name' => $validatedData['name'],
-                'source_of_competency' => $validatedData['source_of_competency'],
-                'module_duration' => $validatedData['module_duration'],
-                'number_of_trainees' => $validatedData['number_of_trainees'],
-                'training_duration' => $validatedData['training_duration'],
-                'entry_requirements' => $validatedData['entry_requirements'],
-            ]);
-
-            // Redirect back with success message
-            return redirect()->route('getTrainingPrograms')->with('success', 'Training program created successfully.');
-        } catch (\Exception $e) {
-            // Log the error and redirect back with an error message
-            Log::error('Error creating training program: ' . $e->getMessage());
-            return redirect()->back()->withErrors(['error' => 'There was an issue creating the training program. Please try again later.']);
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('training_images', 'public'); // Save image
         }
+
+        // Create the training program
+        $trainingProgram = TrainingProgram::create([
+            'institution_id' => Auth::user()->institution->id,
+            'name' => $validatedData['name'],
+            'source_of_competency' => $validatedData['source_of_competency'],
+            'module_duration' => $validatedData['module_duration'],
+            'number_of_trainees' => $validatedData['number_of_trainees'],
+            'training_duration' => $validatedData['training_duration'],
+            'entry_requirements' => $validatedData['entry_requirements'],
+            'description' => $validatedData['description'],
+            'image' => $imagePath ?? null,
+        ]);
+
+        // Store modules
+        foreach ($request->modules as $module) {
+            $trainingProgram->modules()->create([
+                'module_name' => $module['module_name'],
+                'module_duration' => $module['module_duration'],
+            ]);
+        }
+
+        return redirect()->route('getTrainingPrograms')->with('success', 'Training program created successfully.');
     }
 
     public function editTrainingProgram($id)
