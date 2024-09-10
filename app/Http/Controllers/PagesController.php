@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Trainee;
-use App\Models\TrainingProgram;
 use Illuminate\Http\Request;
+use App\Models\TrainingProgram;
+use App\Models\ProgramApplicant;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -81,5 +83,34 @@ class PagesController extends Controller
         }
 
         return redirect()->route('getTraineeProfile', $id)->with('success', 'Profile updated successfully.');
+    }
+
+    public function apply(Request $request, $programId)
+    {
+        // Get the logged-in user (trainee)
+        $trainee = Auth::user();
+
+        // Find the training program by ID
+        $program = TrainingProgram::findOrFail($programId);
+
+        // Check if the user has already applied for this program
+        $existingApplication = ProgramApplicant::where('trainee_id', $trainee->id)
+            ->where('training_program_id', $program->id)
+            ->first();
+
+        if ($existingApplication) {
+            return redirect()->back()->with('error', 'You have already applied for this program.');
+        }
+
+        // Create the application
+        ProgramApplicant::create([
+            'trainee_id' => $trainee->id,
+            'training_program_id' => $program->id,
+            'institution_id' => $program->institution_id,
+            'application_date' => now(),
+            'status' => 'false', // Application status default to false
+        ]);
+
+        return redirect()->back()->with('success', 'You have successfully applied for this program.');
     }
 }
