@@ -17,6 +17,13 @@ class PagesController extends Controller
         return view('backend.dashboard');
     }
 
+    public function getTrainingPrograms()
+    {
+        $trainingPrograms = TrainingProgram::orderBy('id', 'desc')->get();
+
+        return view('backend.trainingPrograms.index', compact('trainingPrograms'));
+    }
+
     public function createTrainingProgram()
     {
         return view('backend.trainingPrograms.create');
@@ -55,11 +62,13 @@ class PagesController extends Controller
         }
     }
 
-    public function getTrainingPrograms()
+    public function editTrainingProgram($id)
     {
-        $trainingPrograms = TrainingProgram::orderBy('id', 'desc')->get();
+        $trainingProgram = TrainingProgram::findOrFail($id);
 
-        return view('backend.trainingPrograms.index', compact('trainingPrograms'));
+        $this->authorize('update', $trainingProgram);
+
+        return view('backend.trainingPrograms.edit', compact('trainingProgram'));
     }
 
     public function getProfile($id)
