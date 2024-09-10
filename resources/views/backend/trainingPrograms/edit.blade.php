@@ -4,13 +4,12 @@
 <div class="page-container relative h-full flex flex-auto flex-col px-4 sm:px-6 md:px-8 py-4 sm:py-6">
     <div class="container mx-auto">
         <div class="flex items-center justify-between mb-4">
-            <h3>Create Training Program</h3>
+            <h3>Edit Training Program</h3>
         </div>
         <div class="card adaptable-card">
             <div class="card-body">
                 <form action="{{ route('updateTrainingProgram', $trainingProgram->id) }}" method="POST">
                     @csrf
-                    @method('PUT')
                     <div class="form-container vertical">
                         <div>
                             <h5>Training Program Information</h5>
