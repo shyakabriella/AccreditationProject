@@ -11,7 +11,7 @@ class AdminController extends Controller
 {
     public function trainingRequests()
     {
-        $requests = TrainingProgram::orderBy('id', 'desc');
+        $requests = TrainingProgramApplication::with('trainingProgram', 'user')->orderBy('created_at', 'desc')->get();
 
         return view('backend.getProgramApplications', compact('requests'));
     }
