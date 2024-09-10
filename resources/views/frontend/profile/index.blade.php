@@ -34,16 +34,35 @@
                 <div class="lg:col-span-8 md:col-span-7">
                     <h4 class="mt-6 text-xl font-semibold">Applications :</h4>
 
-                    @foreach ($applications as $application)
-                        <div class="flex mt-6">
-                            <div class="ms-4">
-                                <h5 class="mb-0 text-lg font-medium">{{ $application->trainingProgram->name ?? 'Unknown' }}</h5>
-                                <span class="text-slate-400 company-university">{{ $application->institution->name ?? 'Unknown' }}</span>
-                                <p class="mt-2 mb-0 text-slate-400">Application Date: {{ $application->application_date ?? 'Unknown' }}</p>
-                                <p class="mt-2 mb-0 text-slate-400">Status: {{ $application->status ?? 'Unknown' }}</p>
+                    <div class="grid grid-cols-1 gap-[30px]">
+                        @foreach ($applications as $application)
+                            <div class="relative items-center justify-between p-5 overflow-hidden transition-all duration-500 rounded shadow group md:flex hover:shadow-md dark:shadow-gray-700">
+                                <div class="flex items-center">
+                                    <div class="flex items-center justify-center bg-white rounded-md shadow size-14 dark:bg-slate-900 dark:shadow-gray-700">
+                                        <img src="{{ asset('storage/' . $application->trainingProgram->image) }}" class="size-8"  alt="">
+                                    </div>
+                                    <a href="{{ route('getTradeDetails', $application->trainingProgram->id) }}" class="text-lg hover:text-emerald-600 font-semibold transition-all duration-500 ms-3 min-w-[180px]">{{ $application->trainingProgram->name ?? 'Unknown' }}</a>
+                                </div>
+
+                                <div class="flex justify-between mt-4 md:block md:mt-0">
+                                    <span class="block"><span class="bg-emerald-600/10 inline-block text-emerald-600 text-xs px-2.5 py-0.5 font-semibold rounded-full">Application Date</span></span>
+                                    <span class="block mt-0 text-sm text-slate-400 md:mt-1"><i class="uil uil-clock"></i> {{ $application->application_date ?? 'Unknown' }}</span>
+                                </div>
+
+                                <div class="mt-4 md:mt-0">
+                                    @if ($application->status == 'Pending')
+                                        <span class="w-full text-white rounded-md bg-red border-red btn hover:bg-red hover:border-red md:ms-2 md:w-auto" style="background: orange;">Pending</span>
+                                    @elseif ($application->status == 'Rejected')
+                                        <span class="w-full text-white bg-red-500 border-red-500 rounded-md btn hover:bg-red-600 hover:border-red-600 md:ms-2 md:w-auto" style="background: red;">Rejected</span>
+                                    @elseif ($application->status == 'Approved')
+                                        <span class="w-full text-white bg-green-500 border-green-500 rounded-md btn hover:bg-green-600 hover:border-green-600 md:ms-2 md:w-auto" style="background: green;">Approved</span>
+                                    @else
+                                        <span class="w-full text-white bg-gray-500 border-gray-500 rounded-md btn hover:bg-gray-600 hover:border-gray-600 md:ms-2 md:w-auto" style="background: gray;">Unknown</span>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
 
                 <div class="lg:col-span-4 md:col-span-5">

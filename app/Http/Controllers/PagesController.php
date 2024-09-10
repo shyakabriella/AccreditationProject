@@ -64,7 +64,7 @@ class PagesController extends Controller
             'training_program_id' => $program->id,
             'institution_id' => $program->institution_id,
             'application_date' => now(),
-            'status' => 'false', // Application status default to false
+            'status' => 'Pending',
         ]);
 
         return redirect()->back()->with('success', 'You have successfully applied for this program.');
