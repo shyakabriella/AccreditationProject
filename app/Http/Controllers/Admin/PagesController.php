@@ -266,7 +266,7 @@ class PagesController extends Controller
     {
         $program = TrainingProgram::find($id);
 
-        // Send application only if the current user is the institution that owns the program
+        // Check if the user is authenticated and if they are the institution that owns the program
         if (auth()->user()->role === 'institution' && auth()->user()->id == $program->institution_id) {
             $program->status = 'pending';
             $program->save();

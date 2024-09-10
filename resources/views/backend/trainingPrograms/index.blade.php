@@ -31,7 +31,7 @@
                                     <td>{{ $program->number_of_trainees }}</td>
                                     <td>{{ $program->training_duration }}</td>
                                     <td>{{ $program->entry_requirements }}</td>
-                                    <td>
+                                    <td class="flex px-3">
                                         <a href="{{ route('editTrainingProgram', $program->id) }}" class="border-0 rounded text-amber-600 bg-amber-100 tag dark:bg-amber-500/20 dark:text-amber-100">
                                             Edit
                                         </a>
@@ -40,9 +40,25 @@
                                             @method('DELETE')
                                             <button type="submit" class="text-red-600 bg-red-100 border-0 rounded tag dark:text-red-100 dark:bg-red-500/20">Delete</button>
                                         </form>
-                                        <span class="text-blue-600 bg-blue-100 border-0 rounded tag dark:bg-blue-500/20 dark:text-blue-100">
-                                            Send Application
-                                        </sp>
+                                        @if(auth()->user()->role === 'institution' && $program->status === 'pending')
+                                            <span class="text-blue-600">Application Sent</span>
+                                        @elseif(auth()->user()->role === 'institution')
+                                            <form action="{{ route('sendApplication', $program->id) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="text-blue-600 bg-blue-100 border-0 rounded tag">Send Application</button>
+                                            </form>
+                                        @elseif(auth()->user()->role === 'admin' && $program->status === 'pending')
+                                            <form action="{{ route('approveProgram', $program->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                <textarea name="admin_comments" placeholder="Approval Comments"></textarea>
+                                                <button type="submit" class="text-green-600 bg-green-100 border-0 rounded tag">Approve</button>
+                                            </form>
+                                            <form action="{{ route('rejectProgram', $program->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                <textarea name="admin_comments" placeholder="Rejection Comments"></textarea>
+                                                <button type="submit" class="text-red-600 bg-red-100 border-0 rounded tag">Reject</button>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

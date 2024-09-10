@@ -18,6 +18,7 @@ Route::middleware(['auth', 'role:admin,institution,company'])->group(function ()
     Route::get('/training-programs/{id}/edit', [App\Http\Controllers\Admin\PagesController::class, 'editTrainingProgram'])->name('editTrainingProgram');
     Route::put('/training-programs/{id}', [App\Http\Controllers\Admin\PagesController::class, 'updateTrainingProgram'])->name('updateTrainingProgram');
     Route::delete('/training-programs/{id}', [App\Http\Controllers\Admin\PagesController::class, 'deleteTrainingProgram'])->name('deleteTrainingProgram');
+    Route::post('/training-programs/{id}/send-application', [App\Http\Controllers\Admin\PagesController::class, 'sendApplication'])->name('sendApplication');
 
     Route::get('/applications', [App\Http\Controllers\Admin\PagesController::class, 'getApplications'])->name('getApplications');
     Route::post('/update-application-status', [App\Http\Controllers\Admin\PagesController::class, 'updateApplicationStatus'])->name('updateApplicationStatus');
@@ -28,7 +29,6 @@ Route::middleware(['auth', 'role:admin,institution,company'])->group(function ()
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::post('/training-programs/{id}/send-application', [App\Http\Controllers\Admin\PagesController::class, 'sendApplication'])->name('sendApplication');
     Route::post('/training-programs/{id}/approve', [App\Http\Controllers\Admin\PagesController::class, 'approveProgram'])->name('approveProgram');
     Route::post('/training-programs/{id}/reject', [App\Http\Controllers\Admin\PagesController::class, 'rejectProgram'])->name('rejectProgram');
 });
