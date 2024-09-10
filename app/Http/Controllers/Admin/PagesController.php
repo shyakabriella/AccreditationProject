@@ -161,6 +161,25 @@ class PagesController extends Controller
                         ->with('success', 'Training program deleted successfully!');
     }
 
+    public function updateApplicationStatus(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'application_id' => 'required|exists:program_applicants,id',
+            'status' => 'required|in:Pending,Rejected,Approved'
+        ]);
+
+        // Find the application by ID
+        $application = ProgramApplicant::find($request->application_id);
+
+        // Update the status
+        $application->status = $request->status;
+        $application->save();
+
+        // Return a JSON response
+        return response()->json(['success' => true]);
+    }
+
     public function getApplications()
     {
         $institutionId = Auth::user()->institution->id;

@@ -20,6 +20,7 @@ Route::middleware(['auth', 'role:admin,institution,company'])->group(function ()
     Route::delete('/training-programs/{id}', [App\Http\Controllers\Admin\PagesController::class, 'deleteTrainingProgram'])->name('deleteTrainingProgram');
 
     Route::get('/applications', [App\Http\Controllers\Admin\PagesController::class, 'getApplications'])->name('getApplications');
+    Route::post('/update-application-status', [App\Http\Controllers\Admin\PagesController::class, 'updateApplicationStatus'])->name('updateApplicationStatus');
 
     Route::get('/{id}', [App\Http\Controllers\Admin\PagesController::class, 'getProfile'])->name('getProfile');
     Route::post('/update/{id}', [App\Http\Controllers\Admin\PagesController::class, 'updateInstitutionProfile'])->name('updateInstitutionProfile');
