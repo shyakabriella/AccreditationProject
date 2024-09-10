@@ -1,14 +1,14 @@
 @extends('backend.layouts.app')
 
 @section('content')
-<div class="page-container relative h-full flex flex-auto flex-col px-4 sm:px-6 md:px-8 py-4 sm:py-6">
+<div class="relative flex flex-col flex-auto h-full px-4 py-4 page-container sm:px-6 md:px-8 sm:py-6">
     <div class="container mx-auto">
         <div class="flex items-center justify-between mb-4">
             <h3>Create Training Program</h3>
         </div>
         <div class="card adaptable-card">
             <div class="card-body">
-                <form action="{{ route('storeTrainingProgram') }}" method="POST">
+                <form action="{{ route('storeTrainingProgram') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-container vertical">
                         <div>
@@ -16,61 +16,79 @@
                             <p>Fill out the details below to create a new training program.</p>
                         </div>
 
-                        <div class="grid md:grid-cols-3 gap-4 py-4 items-center">
-                            <div class="font-semibold">Training Program Name</div>
+                        <div class="grid items-center gap-4 py-4 md:grid-cols-3">
+                            <div class="font-semibold">Program Name</div>
                             <div class="col-span-2">
-                                <div class="flex">
-                                    <input class="input pl-8" type="text" name="name" autocomplete="off" placeholder="Program Name" value="{{ old('name') }}" required>
-                                </div>
+                                <input class="pl-8 input" type="text" name="name" placeholder="Program Name" value="{{ old('name') }}" required>
                             </div>
                         </div>
 
-                        <div class="grid md:grid-cols-3 gap-4 py-4 items-center">
+                        <div class="grid items-center gap-4 py-4 md:grid-cols-3">
                             <div class="font-semibold">Source of Competency</div>
                             <div class="col-span-2">
-                                <div class="flex">
-                                    <input class="input pl-8" type="text" name="source_of_competency" autocomplete="off" placeholder="Source of Competency" value="{{ old('source_of_competency') }}">
-                                </div>
+                                <input class="pl-8 input" type="text" name="source_of_competency" placeholder="Source of Competency" value="{{ old('source_of_competency') }}">
                             </div>
                         </div>
 
-                        <div class="grid md:grid-cols-3 gap-4 py-4 items-center">
+                        <div class="grid items-center gap-4 py-4 md:grid-cols-3">
                             <div class="font-semibold">Module Duration (hours)</div>
                             <div class="col-span-2">
-                                <div class="flex">
-                                    <input class="input pl-8" type="number" name="module_duration" autocomplete="off" placeholder="Module Duration (hours)" value="{{ old('module_duration') }}">
-                                </div>
+                                <input class="pl-8 input" type="number" name="module_duration" placeholder="Module Duration" value="{{ old('module_duration') }}">
                             </div>
                         </div>
 
-                        <div class="grid md:grid-cols-3 gap-4 py-4 items-center">
+                        <div class="grid items-center gap-4 py-4 md:grid-cols-3">
                             <div class="font-semibold">Number of Trainees</div>
                             <div class="col-span-2">
-                                <div class="flex">
-                                    <input class="input pl-8" type="number" name="number_of_trainees" autocomplete="off" placeholder="Number of Trainees" value="{{ old('number_of_trainees') }}">
-                                </div>
+                                <input class="pl-8 input" type="number" name="number_of_trainees" placeholder="Number of Trainees" value="{{ old('number_of_trainees') }}">
                             </div>
                         </div>
 
-                        <div class="grid md:grid-cols-3 gap-4 py-4 items-center">
-                            <div class="font-semibold">Training Duration</div>
+                        <div class="grid items-center gap-4 py-4 md:grid-cols-3">
+                            <div class="font-semibold">Training Duration (hours)</div>
                             <div class="col-span-2">
-                                <div class="flex">
-                                    <input class="input pl-8" type="number" name="training_duration" autocomplete="off" placeholder="Training Duration (hours)" value="{{ old('training_duration') }}">
-                                </div>
+                                <input class="pl-8 input" type="number" name="training_duration" placeholder="Training Duration" value="{{ old('training_duration') }}">
                             </div>
                         </div>
 
-                        <div class="grid md:grid-cols-3 gap-4 py-4 items-center">
-                            <div class="font-semibold">Training Entry Requirements</div>
+                        <div class="grid items-center gap-4 py-4 md:grid-cols-3">
+                            <div class="font-semibold">Entry Requirements</div>
                             <div class="col-span-2">
-                                <div class="flex">
-                                    <input class="input pl-8" type="text" name="entry_requirements" autocomplete="off" placeholder="Entry Requirements" value="{{ old('entry_requirements') }}">
+                                <input class="pl-8 input" type="text" name="entry_requirements" placeholder="Entry Requirements" value="{{ old('entry_requirements') }}">
+                            </div>
+                        </div>
+
+                        <!-- Image Upload -->
+                        <div class="grid items-center gap-4 py-4 md:grid-cols-3">
+                            <div class="font-semibold">Program Image</div>
+                            <div class="col-span-2">
+                                <input class="pl-8 input" type="file" name="image" accept="image/*">
+                            </div>
+                        </div>
+
+                        <!-- Description with CKEditor -->
+                        <div class="grid items-center gap-4 py-4 md:grid-cols-3">
+                            <div class="font-semibold">Description</div>
+                            <div class="col-span-2">
+                                <textarea class="ckeditor" name="description">{{ old('description') }}</textarea>
+                            </div>
+                        </div>
+
+                        <!-- Modules (Dynamic Fields) -->
+                        <div class="grid items-center gap-4 py-4 md:grid-cols-3">
+                            <div class="font-semibold">Modules</div>
+                            <div class="col-span-2">
+                                <div id="modules-wrapper">
+                                    <button type="button" class="mb-2 btn btn-default" onclick="addModule()">Add Module</button>
+                                    <div class="mb-2 module-group">
+                                        <input class="pl-8 input" type="text" name="modules[0][module_name]" placeholder="Module Name">
+                                        <input class="pl-8 input" type="number" name="modules[0][module_duration]" placeholder="Module Duration (hours)">
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="flex mt-4 ltr:justify-end gap-2">
+                        <div class="flex gap-2 mt-4 ltr:justify-end">
                             <button class="btn btn-default" type="reset">Reset</button>
                             <button class="btn btn-solid" type="submit">Create Program</button>
                         </div>
@@ -80,4 +98,22 @@
         </div>
     </div>
 </div>
+
+<!-- CKEditor & Dynamic Module Script -->
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('description');
+
+    let moduleIndex = 1;
+    function addModule() {
+        const wrapper = document.getElementById('modules-wrapper');
+        const newModule = `
+            <div class="mb-2 module-group">
+                <input class="pl-8 input" type="text" name="modules[${moduleIndex}][module_name]" placeholder="Module Name">
+                <input class="pl-8 input" type="number" name="modules[${moduleIndex}][module_duration]" placeholder="Module Duration (hours)">
+            </div>`;
+        wrapper.insertAdjacentHTML('beforeend', newModule);
+        moduleIndex++;
+    }
+</script>
 @endsection
