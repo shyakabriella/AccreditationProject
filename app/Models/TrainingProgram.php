@@ -14,6 +14,8 @@ class TrainingProgram extends Model
         'number_of_trainees',
         'training_duration',
         'entry_requirements',
+        'description',
+        'image',
     ];
 
     public function institution()
@@ -24,5 +26,10 @@ class TrainingProgram extends Model
     public function competencies()
     {
         return $this->belongsToMany(Competency::class);
+    }
+
+    public function modules()
+    {
+        return $this->hasMany(Module::class); // New relationship
     }
 }
