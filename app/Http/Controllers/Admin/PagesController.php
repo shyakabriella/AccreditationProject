@@ -161,6 +161,21 @@ class PagesController extends Controller
                         ->with('success', 'Training program deleted successfully!');
     }
 
+    public function sendApplication($id)
+    {
+        $program = TrainingProgram::find($id);
+
+        // Send application only if the current user is the institution that owns the program
+        if (auth()->user()->role === 'institution' && auth()->user()->id == $program->institution_id) {
+            $program->status = 'pending';
+            $program->save();
+
+            return redirect()->back()->with('success', 'Application sent to admin for approval.');
+        }
+
+        return redirect()->back()->with('error', 'Unauthorized action.');
+    }
+
     public function updateApplicationStatus(Request $request)
     {
         // Validate the request
