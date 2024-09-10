@@ -57,7 +57,7 @@ class PagesController extends Controller
 
     public function getTrainingPrograms()
     {
-        $trainingPrograms = TrainingProgram::all();
+        $trainingPrograms = TrainingProgram::orderBy('id', 'desc')->get();
 
         return view('backend.trainingPrograms.index', compact('trainingPrograms'));
     }
