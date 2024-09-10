@@ -18,6 +18,9 @@ Route::middleware(['auth', 'role:admin,institution,company'])->group(function ()
     Route::get('/training-programs/{id}/edit', [App\Http\Controllers\Admin\PagesController::class, 'editTrainingProgram'])->name('editTrainingProgram');
     Route::put('/training-programs/{id}', [App\Http\Controllers\Admin\PagesController::class, 'updateTrainingProgram'])->name('updateTrainingProgram');
     Route::delete('/training-programs/{id}', [App\Http\Controllers\Admin\PagesController::class, 'deleteTrainingProgram'])->name('deleteTrainingProgram');
+
+    Route::get('/applications', [App\Http\Controllers\Admin\PagesController::class, 'getApplications'])->name('getApplications');
+
     Route::get('/{id}', [App\Http\Controllers\Admin\PagesController::class, 'getProfile'])->name('getProfile');
     Route::post('/update/{id}', [App\Http\Controllers\Admin\PagesController::class, 'updateInstitutionProfile'])->name('updateInstitutionProfile');
 

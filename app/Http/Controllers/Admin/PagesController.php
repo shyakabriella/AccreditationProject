@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\TrainingProgram;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\ProgramApplicant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -158,6 +159,16 @@ class PagesController extends Controller
 
         return redirect()->route('getTrainingPrograms')
                         ->with('success', 'Training program deleted successfully!');
+    }
+
+    public function getApplications()
+    {
+        $institutionId = Auth::user()->institution->id;
+        $applications = ProgramApplicant::where('institution_id', $institutionId)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return view('backend.getApplications', compact('applications'));
     }
 
     public function getProfile($id)
