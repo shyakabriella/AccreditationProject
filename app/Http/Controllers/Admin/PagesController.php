@@ -277,6 +277,13 @@ class PagesController extends Controller
         return redirect()->back()->with('error', 'Unauthorized action.');
     }
 
+    public function trainingRequests()
+    {
+        $requests = TrainingProgram::orderBy('id', 'desc');
+
+        return view('backend.getProgramApplications', compact('requests'));
+    }
+
     public function approveProgram(Request $request, $id)
     {
         $program = TrainingProgram::find($id);
