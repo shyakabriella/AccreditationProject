@@ -191,6 +191,21 @@ class PagesController extends Controller
         return redirect()->back()->with('error', 'Unauthorized action.');
     }
 
+    public function rejectProgram(Request $request, $id)
+    {
+        $program = TrainingProgram::find($id);
+
+        if (auth()->user()->role === 'admin') {
+            $program->status = 'rejected';
+            $program->admin_comments = $request->input('admin_comments');
+            $program->save();
+
+            return redirect()->back()->with('success', 'Program rejected.');
+        }
+
+        return redirect()->back()->with('error', 'Unauthorized action.');
+    }
+
     public function updateApplicationStatus(Request $request)
     {
         // Validate the request
