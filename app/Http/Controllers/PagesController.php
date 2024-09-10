@@ -18,12 +18,16 @@ class PagesController extends Controller
 
     public function getTrades()
     {
-        return view('frontend.trades.index');
+        $trainingPrograms = TrainingProgram::orderBy('id', 'desc')->get();
+
+        return view('frontend.trades.index', compact('trainingPrograms'));
     }
 
-    public function getTradeDetails()
+    public function getTradeDetails($id)
     {
-        return view('frontend.trades.show');
+        $program = TrainingProgram::findOrFail($id);
+
+        return view('frontend.trades.show', compact('program'));
     }
 
     public function getTraineeProfile($id)
