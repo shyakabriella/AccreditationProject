@@ -25,6 +25,7 @@ Route::middleware(['auth', 'role:admin,institution,company'])->group(function ()
 
     Route::get('/{id}', [App\Http\Controllers\Admin\PagesController::class, 'getProfile'])->name('getProfile');
     Route::post('/update/{id}', [App\Http\Controllers\Admin\PagesController::class, 'updateInstitutionProfile'])->name('updateInstitutionProfile');
+
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
