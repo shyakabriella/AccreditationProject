@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('number_of_trainees')->nullable();
             $table->integer('training_duration')->nullable();
             $table->string('entry_requirements')->nullable();
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->foreign('institution_id')->references('id')->on('institutions')->onDelete('cascade');
