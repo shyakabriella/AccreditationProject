@@ -23,6 +23,12 @@ class PagesController extends Controller
 
     public function getTrainingPrograms()
     {
+        // Check if the logged-in user has institution data
+        if (is_null(Auth::user()->institution)) {
+            // Redirect to the profile page if institution data is missing
+            return redirect()->route('getProfile', auth()->user()->id)->with('error', 'Please complete your institution data.');
+        }
+
         $institutionId = Auth::user()->institution->id;
         $trainingPrograms = TrainingProgram::where('institution_id', $institutionId)
             ->orderBy('id', 'desc')
@@ -33,6 +39,12 @@ class PagesController extends Controller
 
     public function createTrainingProgram()
     {
+        // Check if the logged-in user has institution data
+        if (is_null(Auth::user()->institution)) {
+            // Redirect to the profile page if institution data is missing
+            return redirect()->route('getProfile', auth()->user()->id)->with('error', 'Please complete your institution data.');
+        }
+
         return view('backend.trainingPrograms.create');
     }
 
