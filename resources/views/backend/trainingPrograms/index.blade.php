@@ -1,7 +1,7 @@
 @extends('backend.layouts.app')
 
 @section('content')
-<div class="page-container relative h-full flex flex-auto flex-col px-4 sm:px-6 md:px-8 py-4 sm:py-6">
+<div class="relative flex flex-col flex-auto h-full px-4 py-4 page-container sm:px-6 md:px-8 sm:py-6">
     <div class="container mx-auto">
         <div class="card adaptable-card">
             <div class="card-body">
@@ -32,12 +32,17 @@
                                     <td>{{ $program->training_duration }}</td>
                                     <td>{{ $program->entry_requirements }}</td>
                                     <td>
-                                        <a href="{{ route('editTrainingProgram', $program->id) }}" class="btn btn-warning">Edit</a>
+                                        <a href="{{ route('editTrainingProgram', $program->id) }}" class="border-0 rounded text-amber-600 bg-amber-100 tag dark:bg-amber-500/20 dark:text-amber-100">
+                                            Edit
+                                        </a>
                                         <form action="{{ route('deleteTrainingProgram', $program->id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="text-red-600 bg-red-100 border-0 rounded tag dark:text-red-100 dark:bg-red-500/20">Delete</button>
                                         </form>
+                                        <span class="text-blue-600 bg-blue-100 border-0 rounded tag dark:bg-blue-500/20 dark:text-blue-100">
+                                            Send Application
+                                        </sp>
                                     </td>
                                 </tr>
                             @endforeach
