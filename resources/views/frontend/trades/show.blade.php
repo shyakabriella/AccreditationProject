@@ -24,4 +24,79 @@
         </div>
     </div>
 
+    <section class="relative py-16 md:py-24">
+        <div class="container">
+            <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px]">
+                <div class="lg:col-span-4 md:col-span-6">
+                    <div class="sticky bg-white rounded-md shadow dark:shadow-gray-700 dark:bg-slate-900 top-20">
+                        <div class="p-6">
+                            <h5 class="text-lg font-semibold">Program Information</h5>
+                        </div>
+                        <div class="p-6 border-t border-slate-100 dark:border-t-gray-700">
+                            <ul class="list-none">
+                                <li class="flex items-center">
+                                    <i data-feather="user-check" class="size-5"></i>
+
+                                    <div class="ms-4">
+                                        <p class="font-medium">Institution Name:</p>
+                                        <span class="text-sm font-medium text-emerald-600">{{ $program->institution->name }}</span>
+                                    </div>
+                                </li>
+
+                                <li class="flex items-center mt-3">
+                                    <i data-feather="map-pin" class="size-5"></i>
+
+                                    <div class="ms-4">
+                                        <p class="font-medium">Location:</p>
+                                        <span class="text-sm font-medium text-emerald-600">{{ $program->institution->physical_address }}</span>
+                                    </div>
+                                </li>
+
+                                <li class="flex items-center mt-3">
+                                    <i data-feather="monitor" class="size-5"></i>
+
+                                    <div class="ms-4">
+                                        <p class="font-medium">Program:</p>
+                                        <span class="text-sm font-medium text-emerald-600">{{ $program->name }}</span>
+                                    </div>
+                                </li>
+
+                                <li class="flex items-center mt-3">
+                                    <i data-feather="briefcase" class="size-5"></i>
+
+                                    <div class="ms-4">
+                                        <p class="font-medium">Training Duration:</p>
+                                        <span class="text-sm font-medium text-emerald-600">{{ $program->training_duration }}</span>
+                                    </div>
+                                </li>
+
+                                <li class="flex items-center mt-3">
+                                    <i data-feather="clock" class="size-5"></i>
+
+                                    <div class="ms-4">
+                                        <p class="font-medium">Date posted:</p>
+                                        <span class="text-sm font-medium text-emerald-600">
+                                            {{ $program->created_at->diffForHumans() }}
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8 md:col-span-6">
+                    <h5 class="text-lg font-semibold">Job Description:</h5>
+
+                    <p class="mt-4 text-slate-400">
+                        One disadvantage of Lorum Ipsum is that in Latin certain letters appear more frequently than others - which creates a distinct visual impression. Moreover, in Latin only words at the beginning of sentences are capitalized.
+                    </p>
+
+                    <div class="mt-5">
+                        <a href="#" class="w-full text-white rounded-md btn bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 md:ms-2 md:w-auto">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 @endsection
