@@ -92,6 +92,16 @@ class PagesController extends Controller
                         ->with('success', 'Training program updated successfully!');
     }
 
+    public function deleteTrainingProgram($id)
+    {
+        $trainingProgram = TrainingProgram::findOrFail($id);
+
+        $trainingProgram->delete();
+
+        return redirect()->route('getTrainingPrograms')
+                        ->with('success', 'Training program deleted successfully!');
+    }
+
     public function getProfile($id)
     {
         $user = User::with('institution')->findOrFail($id);
