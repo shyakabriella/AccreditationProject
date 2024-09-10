@@ -23,7 +23,7 @@
                                     <div class="col-span-2">
                                         <div class="flex">
                                             <input class="input pl-8" type="text" name="name" autocomplete="off" placeholder="Institution Name" value="{{ old('name', $institution->name ?? Auth::user()->name) }}">
-                                            <input class="input pl-8" type="text" name="type" autocomplete="off" placeholder="Institution Type" value="{{ old('type', $institution->type ?? Auth::user()->email) }}">
+                                            <input class="input pl-8" type="text" name="type" autocomplete="off" placeholder="Institution Type" value="{{ old('type', $institution->type) }}">
                                             <input class="input pl-8" type="text" name="physical_address" autocomplete="off" placeholder="Physical Address" value="{{ old('physical_address', $institution->physical_address) }}">
                                     </div>
                                     </div>
@@ -55,7 +55,7 @@
                                     <div class="col-span-2">
                                         <div class="flex">
                                             <input class="input pl-8" type="text" name="phone" autocomplete="off" placeholder="Phone" value="{{ old('phone', $institution->phone) }}">
-                                            <input class="input pl-8" type="email" name="email" autocomplete="off" placeholder="Email" value="{{ old('email', $institution->email) }}">
+                                            <input class="input pl-8" type="email" name="email" autocomplete="off" placeholder="Email" value="{{ old('email', $institution->email ?? Auth::user()->email) }}">
                                         </div>
                                     </div>
                                 </div>

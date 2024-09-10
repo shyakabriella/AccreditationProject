@@ -19,7 +19,10 @@ class PagesController extends Controller
 
     public function getTrainingPrograms()
     {
-        $trainingPrograms = TrainingProgram::orderBy('id', 'desc')->get();
+        $institutionId = Auth::user()->institution->id;
+        $trainingPrograms = TrainingProgram::where('institution_id', $institutionId)
+            ->orderBy('id', 'desc')
+            ->get();
 
         return view('backend.trainingPrograms.index', compact('trainingPrograms'));
     }
