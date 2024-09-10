@@ -147,7 +147,7 @@ class PagesController extends Controller
         }
 
         // Redirect back with success message
-        return redirect()->route('admin.trainingPrograms.index')->with('success', 'Training Program updated successfully.');
+        return redirect()->route('getTrainingPrograms')->with('success', 'Training Program updated successfully.');
     }
 
     public function deleteTrainingProgram($id)

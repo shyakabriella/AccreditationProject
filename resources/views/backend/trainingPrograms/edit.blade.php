@@ -10,12 +10,15 @@
             <div class="card-body">
                 <form action="{{ route('updateTrainingProgram', $trainingProgram->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT') <!-- Add this to handle the PUT request -->
+
                     <div class="form-container vertical">
                         <div>
                             <h5>Training Program Information</h5>
                             <p>Edit the details below to update the training program.</p>
                         </div>
 
+                        <!-- Program Name -->
                         <div class="grid items-center gap-4 py-4 md:grid-cols-3">
                             <div class="font-semibold">Program Name</div>
                             <div class="col-span-2">
@@ -23,6 +26,7 @@
                             </div>
                         </div>
 
+                        <!-- Source of Competency -->
                         <div class="grid items-center gap-4 py-4 md:grid-cols-3">
                             <div class="font-semibold">Source of Competency</div>
                             <div class="col-span-2">
@@ -30,6 +34,7 @@
                             </div>
                         </div>
 
+                        <!-- Module Duration -->
                         <div class="grid items-center gap-4 py-4 md:grid-cols-3">
                             <div class="font-semibold">Module Duration (hours)</div>
                             <div class="col-span-2">
@@ -37,6 +42,7 @@
                             </div>
                         </div>
 
+                        <!-- Number of Trainees -->
                         <div class="grid items-center gap-4 py-4 md:grid-cols-3">
                             <div class="font-semibold">Number of Trainees</div>
                             <div class="col-span-2">
@@ -44,6 +50,7 @@
                             </div>
                         </div>
 
+                        <!-- Training Duration -->
                         <div class="grid items-center gap-4 py-4 md:grid-cols-3">
                             <div class="font-semibold">Training Duration (hours)</div>
                             <div class="col-span-2">
@@ -51,6 +58,7 @@
                             </div>
                         </div>
 
+                        <!-- Entry Requirements -->
                         <div class="grid items-center gap-4 py-4 md:grid-cols-3">
                             <div class="font-semibold">Entry Requirements</div>
                             <div class="col-span-2">
@@ -62,10 +70,12 @@
                         <div class="grid items-center gap-4 py-4 md:grid-cols-3">
                             <div class="font-semibold">Program Image</div>
                             <div class="col-span-2">
-                                <input class="pl-8 input" type="file" name="image" accept="image/*">
-                                @if($trainingProgram->image)
-                                    <img src="{{ asset('storage/' . $trainingProgram->image) }}" alt="Program Image" class="w-32 h-auto mt-2">
-                                @endif
+                                <div class="flex">
+                                    @if($trainingProgram->image)
+                                        <img src="{{ asset('storage/' . $trainingProgram->image) }}" alt="Program Image" class="w-10 h-auto mt-2">
+                                    @endif
+                                    <input class="pl-8 input" type="file" name="image" accept="image/*">
+                                </div>
                             </div>
                         </div>
 
@@ -82,17 +92,19 @@
                             <div class="font-semibold">Modules</div>
                             <div class="col-span-2">
                                 <div id="modules-wrapper">
-                                    <button type="button" class="mb-2 btn btn-default" onclick="addModule()">Add Module</button>
+                                    <button type="button" class="mb-2 btn btn-solid" onclick="addModule()">+ Add Module</button>
                                     @foreach($trainingProgram->modules as $index => $module)
-                                    <div class="mb-2 module-group">
-                                        <input class="pl-8 input" type="text" name="modules[{{ $index }}][module_name]" placeholder="Module Name" value="{{ $module->module_name }}">
-                                        <input class="pl-8 input" type="number" name="modules[{{ $index }}][module_duration]" placeholder="Module Duration (hours)" value="{{ $module->module_duration }}">
+                                    <div class="flex items-center gap-2 mb-2 module-group">
+                                        <input class="w-1/2 pl-8 input" type="text" name="modules[{{ $index }}][module_name]" placeholder="Module Name" value="{{ $module->module_name }}">
+                                        <input class="w-1/3 pl-8 input" type="number" name="modules[{{ $index }}][module_duration]" placeholder="Duration (hours)" value="{{ $module->module_duration }}">
+                                        <button type="button" class="btn btn-danger" onclick="removeModule(this)">Remove</button>
                                     </div>
                                     @endforeach
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Buttons -->
                         <div class="flex gap-2 mt-4 ltr:justify-end">
                             <button class="btn btn-default" type="reset">Reset</button>
                             <button class="btn btn-solid" type="submit">Update Program</button>
@@ -110,15 +122,22 @@
     CKEDITOR.replace('description');
 
     let moduleIndex = {{ count($trainingProgram->modules) }};
+
     function addModule() {
         const wrapper = document.getElementById('modules-wrapper');
         const newModule = `
-            <div class="mb-2 module-group">
-                <input class="pl-8 input" type="text" name="modules[${moduleIndex}][module_name]" placeholder="Module Name">
-                <input class="pl-8 input" type="number" name="modules[${moduleIndex}][module_duration]" placeholder="Module Duration (hours)">
+            <div class="flex items-center gap-2 mb-2 module-group">
+                <input class="w-1/2 pl-8 input" type="text" name="modules[${moduleIndex}][module_name]" placeholder="Module Name">
+                <input class="w-1/3 pl-8 input" type="number" name="modules[${moduleIndex}][module_duration]" placeholder="Duration (hours)">
+                <button type="button" class="btn btn-danger" onclick="removeModule(this)">Remove</button>
             </div>`;
         wrapper.insertAdjacentHTML('beforeend', newModule);
         moduleIndex++;
+    }
+
+    function removeModule(button) {
+        const moduleGroup = button.closest('.module-group');
+        moduleGroup.remove();
     }
 </script>
 @endsection

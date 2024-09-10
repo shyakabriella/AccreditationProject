@@ -79,10 +79,13 @@
                             <div class="font-semibold">Modules</div>
                             <div class="col-span-2">
                                 <div id="modules-wrapper">
-                                    <button type="button" class="mb-2 btn btn-default" onclick="addModule()">Add Module</button>
-                                    <div class="mb-2 module-group">
-                                        <input class="pl-8 input" type="text" name="modules[0][module_name]" placeholder="Module Name">
-                                        <input class="pl-8 input" type="number" name="modules[0][module_duration]" placeholder="Module Duration (hours)">
+                                    <button type="button" class="mb-2 btn btn-solid" onclick="addModule()">+ Add Module</button>
+
+                                    <!-- Existing Module Groups -->
+                                    <div class="flex items-center gap-2 mb-2 module-group">
+                                        <input class="w-1/2 pl-8 input" type="text" name="modules[0][module_name]" placeholder="Module Name">
+                                        <input class="w-1/3 pl-8 input" type="number" name="modules[0][module_duration]" placeholder="Duration (hours)">
+                                        <button type="button" class="btn btn-danger" onclick="removeModule(this)">Remove</button>
                                     </div>
                                 </div>
                             </div>
@@ -104,16 +107,25 @@
 <script>
     CKEDITOR.replace('description');
 
-    let moduleIndex = 1;
+    let moduleCount = 1;
+
     function addModule() {
-        const wrapper = document.getElementById('modules-wrapper');
-        const newModule = `
-            <div class="mb-2 module-group">
-                <input class="pl-8 input" type="text" name="modules[${moduleIndex}][module_name]" placeholder="Module Name">
-                <input class="pl-8 input" type="number" name="modules[${moduleIndex}][module_duration]" placeholder="Module Duration (hours)">
-            </div>`;
-        wrapper.insertAdjacentHTML('beforeend', newModule);
-        moduleIndex++;
+        const moduleWrapper = document.getElementById('modules-wrapper');
+        const newModuleGroup = document.createElement('div');
+        newModuleGroup.classList.add('module-group', 'flex', 'gap-2', 'items-center', 'mb-2');
+
+        newModuleGroup.innerHTML = `
+            <input class="w-1/2 pl-8 input" type="text" name="modules[${moduleCount}][module_name]" placeholder="Module Name">
+            <input class="w-1/3 pl-8 input" type="number" name="modules[${moduleCount}][module_duration]" placeholder="Duration (hours)">
+            <button type="button" class="btn btn-danger" onclick="removeModule(this)">Remove</button>
+        `;
+        moduleWrapper.appendChild(newModuleGroup);
+        moduleCount++;
+    }
+
+    function removeModule(button) {
+        const moduleGroup = button.closest('.module-group');
+        moduleGroup.remove();
     }
 </script>
 @endsection
