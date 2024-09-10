@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('entry_requirements')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->text('admin_comments')->nullable();
             $table->timestamps();
 
             $table->foreign('institution_id')->references('id')->on('institutions')->onDelete('cascade');
