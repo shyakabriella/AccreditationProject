@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('content')
 
-    <section class="relative table w-full py-36 bg-[url('../../assets/images/hero/bg.jpg')] bg-top bg-no-repeat bg-cover">
+    <section class="relative table w-full py-36 bg-[url('https://upload.wikimedia.org/wikipedia/commons/7/78/KCC_Wallpaper_by_Mudahunga.jpg')] bg-top bg-no-repeat bg-cover">
         <div class="absolute inset-0 bg-emerald-900/90"></div>
         <div class="container">
             <div class="grid grid-cols-1 mt-10 text-center">
@@ -116,10 +116,6 @@
                     <p class="mt-4 text-slate-400">
                         {!! $program->description !!}
                     </p>
-
-                    <div class="mt-5">
-                        <a href="#" class="w-full text-white rounded-md btn bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 md:ms-2 md:w-auto">Apply Now</a>
-                    </div>
                 </div>
             </div>
         </div>
