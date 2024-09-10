@@ -10,6 +10,12 @@ Route::get('/programs', [App\Http\Controllers\PagesController::class, 'getTrades
 Route::get('/program/{id}', [App\Http\Controllers\PagesController::class, 'getTradeDetails'])->name('getTradeDetails');
 Route::post('/programs/{id}/apply', [App\Http\Controllers\PagesController::class, 'apply'])->name('programApply');
 
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/training-requests', [App\Http\Controllers\Admin\AdminController::class, 'trainingRequests'])->name('trainingRequests');
+    Route::post('/training-programs/{id}/approve', [App\Http\Controllers\Admin\AdminController::class, 'approveProgram'])->name('approveProgram');
+    Route::post('/training-programs/{id}/reject', [App\Http\Controllers\Admin\AdminController::class, 'rejectProgram'])->name('rejectProgram');
+});
+
 Route::middleware(['auth', 'role:admin,institution,company'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\PagesController::class, 'dashboard'])->name('dashboard');
     Route::get('/training-programs/create', [App\Http\Controllers\Admin\PagesController::class, 'createTrainingProgram'])->name('createTrainingProgram');
@@ -26,12 +32,6 @@ Route::middleware(['auth', 'role:admin,institution,company'])->group(function ()
     Route::get('/{id}', [App\Http\Controllers\Admin\PagesController::class, 'getProfile'])->name('getProfile');
     Route::post('/update/{id}', [App\Http\Controllers\Admin\PagesController::class, 'updateInstitutionProfile'])->name('updateInstitutionProfile');
 
-});
-
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/training-requests', [App\Http\Controllers\Admin\PagesController::class, 'trainingRequests'])->name('trainingRequests');
-    Route::post('/training-programs/{id}/approve', [App\Http\Controllers\Admin\PagesController::class, 'approveProgram'])->name('approveProgram');
-    Route::post('/training-programs/{id}/reject', [App\Http\Controllers\Admin\PagesController::class, 'rejectProgram'])->name('rejectProgram');
 });
 
 Route::middleware(['auth', 'role:institution'])->group(function () {
