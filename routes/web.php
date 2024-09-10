@@ -8,6 +8,7 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\PagesController::class, 'home'])->name('home');
 Route::get('/programs', [App\Http\Controllers\PagesController::class, 'getTrades'])->name('getTrades');
 Route::get('/program/{id}', [App\Http\Controllers\PagesController::class, 'getTradeDetails'])->name('getTradeDetails');
+Route::post('/programs/{id}/apply', [App\Http\Controllers\PagesController::class, 'apply'])->name('programApply');
 
 Route::middleware(['auth', 'role:admin,institution,company'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\PagesController::class, 'dashboard'])->name('dashboard');
