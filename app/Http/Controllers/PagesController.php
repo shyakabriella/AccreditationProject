@@ -32,6 +32,44 @@ class PagesController extends Controller
         return view('frontend.trades.show', compact('program'));
     }
 
+    public function apply(Request $request, $programId)
+    {
+        // Get the logged-in user
+        $user = Auth::user();
+
+        // Check if the user has a corresponding trainee record
+        $trainee = Trainee::where('user_id', $user->id)->first();
+
+        // If no trainee record exists, redirect to the profile edit page
+        if (!$trainee) {
+            return redirect()->route('editTraineeProfile', $user->id)
+                ->with('error', 'Please complete your trainee profile before applying.');
+        }
+
+        // Find the training program by ID
+        $program = TrainingProgram::findOrFail($programId);
+
+        // Check if the user has already applied for this program
+        $existingApplication = ProgramApplicant::where('trainee_id', $trainee->id)
+            ->where('training_program_id', $program->id)
+            ->first();
+
+        if ($existingApplication) {
+            return redirect()->back()->with('error', 'You have already applied for this program.');
+        }
+
+        // Create the application
+        ProgramApplicant::create([
+            'trainee_id' => $trainee->id,
+            'training_program_id' => $program->id,
+            'institution_id' => $program->institution_id,
+            'application_date' => now(),
+            'status' => 'false', // Application status default to false
+        ]);
+
+        return redirect()->back()->with('success', 'You have successfully applied for this program.');
+    }
+
     public function getTraineeProfile($id)
     {
         $user = User::with('trainee')->findOrFail($id);
@@ -83,34 +121,5 @@ class PagesController extends Controller
         }
 
         return redirect()->route('getTraineeProfile', $id)->with('success', 'Profile updated successfully.');
-    }
-
-    public function apply(Request $request, $programId)
-    {
-        // Get the logged-in user (trainee)
-        $trainee = Auth::user();
-
-        // Find the training program by ID
-        $program = TrainingProgram::findOrFail($programId);
-
-        // Check if the user has already applied for this program
-        $existingApplication = ProgramApplicant::where('trainee_id', $trainee->id)
-            ->where('training_program_id', $program->id)
-            ->first();
-
-        if ($existingApplication) {
-            return redirect()->back()->with('error', 'You have already applied for this program.');
-        }
-
-        // Create the application
-        ProgramApplicant::create([
-            'trainee_id' => $trainee->id,
-            'training_program_id' => $program->id,
-            'institution_id' => $program->institution_id,
-            'application_date' => now(),
-            'status' => 'false', // Application status default to false
-        ]);
-
-        return redirect()->back()->with('success', 'You have successfully applied for this program.');
     }
 }

@@ -116,6 +116,11 @@
                     <p class="mt-4 text-slate-400">
                         {!! $program->description !!}
                     </p>
+
+                    <form action="{{ route('programApply', $program->id) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="px-4 py-2 text-white rounded-md bg-emerald-600">Apply Now</button>
+                    </form>
                 </div>
             </div>
         </div>
