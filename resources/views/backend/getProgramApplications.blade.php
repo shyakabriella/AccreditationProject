@@ -7,7 +7,6 @@
             <div class="card-body">
                 <div class="flex items-center justify-between mb-4">
                     <h3>Training Programs</h3>
-                    <a href="{{ route('createTrainingProgram') }}" class="btn btn-solid">Create New Program</a>
                 </div>
                 <div class="overflow-x-auto">
                     <table id="training-program-list-data-table" class="table-default table-hover data-table">
