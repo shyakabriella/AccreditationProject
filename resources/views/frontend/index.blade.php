@@ -3,70 +3,68 @@
 
     @include('frontend.inc.hero')
 
-    <section class="relative bg-slate-50 dark:bg-slate-800 md:py-24 py-16">
+    <section class="relative py-16 bg-slate-50 dark:bg-slate-800 md:py-24">
         <div class="container">
             <div class="grid grid-cols-1 pb-8 text-center">
                 <h3 class="mb-4 md:text-[26px] md:leading-normal text-2xl leading-normal font-semibold">Popular Jobs</h3>
 
-                <p class="text-slate-400 max-w-xl mx-auto">Search all the open positions on the web. Get your own personalized salary estimate. Read reviews on over 30000+ companies worldwide.</p>
+                <p class="max-w-xl mx-auto text-slate-400">Search all the open positions on the web. Get your own personalized salary estimate. Read reviews on over 30000+ companies worldwide.</p>
             </div>
 
             <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
-                <div class="group relative overflow-hidden bg-white dark:bg-slate-900 shadow hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 hover:-mt-2 rounded-md transition-all duration-500 h-fit">
-                    <div class="p-6">
-                        <div class="flex items-center">
-                            <div class="size-14 min-w-[56px] flex items-center justify-center bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-md">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png" class="size-8"  alt="">
-                            </div>
+                @foreach ($trainingPrograms as $program)
+                    <div class="relative overflow-hidden transition-all duration-500 bg-white rounded-md shadow group dark:bg-slate-900 hover:shadow-md dark:shadow-gray-700 dark:hover:shadow-gray-700 hover:-mt-2 h-fit">
+                        <div class="p-6">
+                            <div class="flex items-center">
+                                <div class="size-14 min-w-[56px] flex items-center justify-center bg-white dark:bg-slate-900 shadow dark:shadow-gray-700 rounded-md">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png" class="size-8"  alt="">
+                                </div>
 
-                            <div class="ms-3">
-                                <a href="#" class="inline-block text-[16px] font-semibold hover:text-emerald-600 transition-all duration-500 me-1">Web Designer</a>
-                                <span class="inline-block text-sm text-slate-400">2 days ago</span>
-                                <div>
-                                    <span class="bg-emerald-600/10 inline-block text-emerald-600 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">Full Time</span>
-                                    <span class="text-sm font-medium inline-block me-1">Est. time: <span class="text-slate-400">1 to 3 months</span></span>
-                                    <span class="text-sm font-medium inline-block me-1">Hourly: <span class="text-slate-400">$16 - $20</span></span>
+                                <div class="ms-3">
+                                    <a href="#" class="inline-block text-[16px] font-semibold hover:text-emerald-600 transition-all duration-500 me-1">
+                                        {{ $program->name }}
+                                    </a>
+                                    <span class="inline-block text-sm text-slate-400">{{ $program->created_at->diffForHumans() }}</span>
+                                    <div>
+                                        <span class="bg-emerald-600/10 inline-block text-emerald-600 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">Full Time</span>
+                                        <span class="inline-block text-sm font-medium me-1">Est. time: <span class="text-slate-400">{{ $program->training_duration }} Months</span></span>
+                                        <span class="inline-block text-sm font-medium me-1">Duration: <span class="text-slate-400">{{ $program->module_duration }} hrs</span></span>
+                                    </div>
                                 </div>
                             </div>
+
+                            <p class="py-3 text-slate-400">Looking for an experienced Web Designer for an our company.</p>
+
+                            <div>
+                                <span class="bg-slate-100 dark:bg-slate-800 inline-block text-slate-900 dark:text-slate-300 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">HTML</span>
+                                <span class="bg-slate-100 dark:bg-slate-800 inline-block text-slate-900 dark:text-slate-300 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">CSS</span>
+                                <span class="bg-slate-100 dark:bg-slate-800 inline-block text-slate-900 dark:text-slate-300 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">SASS</span>
+                                <span class="bg-slate-100 dark:bg-slate-800 inline-block text-slate-900 dark:text-slate-300 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">SCSS</span>
+                                <span class="bg-slate-100 dark:bg-slate-800 inline-block text-slate-900 dark:text-slate-300 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">Photoshop</span>
+                                <span class="bg-slate-100 dark:bg-slate-800 inline-block text-slate-900 dark:text-slate-300 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">Graphics</span>
+                                <span class="bg-slate-100 dark:bg-slate-800 inline-block text-slate-900 dark:text-slate-300 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">Bootstrap</span>
+                            </div>
                         </div>
 
-                        <p class="text-slate-400 py-3">Looking for an experienced Web Designer for an our company.</p>
+                        <div class="items-center justify-between px-6 py-2 bg-slate-50 dark:bg-slate-800 lg:flex">
+                            <div class="flex justify-between lg:inline-block">
+                                <span class="inline-block me-1 text-slate-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20"><g fill="#000"><path fill-rule="evenodd" d="M15.69 9.534a3 3 0 0 1 1.859 1.925l1.301 4.05c.512 1.594-.33 3.312-1.879 3.838a2.9 2.9 0 0 1-.927.153h-8.09C6.324 19.5 5 18.14 5 16.462c0-.323.05-.645.15-.952l1.3-4.05a3 3 0 0 1 1.86-1.926C8.116 8.901 8 8.297 8 7.786C8 5.419 9.79 3.5 12 3.5s4 1.919 4 4.286c0 .511-.115 1.115-.31 1.748" clip-rule="evenodd" opacity="0.2"/><path fill-rule="evenodd" d="M10 8.5a2 2 0 1 0 0-4a2 2 0 0 0 0 4m0-3a1 1 0 1 1 0 2a1 1 0 0 1 0-2" clip-rule="evenodd"/><path fill-rule="evenodd" d="M5.5 6.286C5.5 8.959 8.153 13.5 10 13.5c1.848 0 4.5-4.541 4.5-7.214C14.5 3.65 12.493 1.5 10 1.5S5.5 3.65 5.5 6.286m8 0c0 2.193-2.348 6.214-3.5 6.214c-1.151 0-3.5-4.02-3.5-6.214C6.5 4.187 8.075 2.5 10 2.5s3.5 1.687 3.5 3.786" clip-rule="evenodd"/><path d="M13.435 9.14a.5.5 0 0 1 .369-.929a3 3 0 0 1 1.74 1.84l1.334 4A3 3 0 0 1 14.03 18H5.97a3 3 0 0 1-2.846-3.949l1.333-4A3 3 0 0 1 6.24 8.194a.5.5 0 1 1 .355.935a2 2 0 0 0-1.19 1.239l-1.333 4A2 2 0 0 0 5.97 17h8.062a2 2 0 0 0 1.897-2.633l-1.332-4a2 2 0 0 0-1.16-1.226"/></g></svg>
+                                    {{ $program->institution->physical_address }}
+                                </span>
+                            </div>
 
-                        <div>
-                            <span class="bg-slate-100 dark:bg-slate-800 inline-block text-slate-900 dark:text-slate-300 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">HTML</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 inline-block text-slate-900 dark:text-slate-300 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">CSS</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 inline-block text-slate-900 dark:text-slate-300 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">SASS</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 inline-block text-slate-900 dark:text-slate-300 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">SCSS</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 inline-block text-slate-900 dark:text-slate-300 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">Photoshop</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 inline-block text-slate-900 dark:text-slate-300 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">Graphics</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 inline-block text-slate-900 dark:text-slate-300 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">Bootstrap</span>
+                            <a href="#" class="w-full mt-4 text-white rounded-md btn btn-sm bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 md:ms-2 lg:w-auto lg:mt-0">Apply Now</a>
                         </div>
+
+                        <a href="" class="absolute top-0 m-3 rounded-full btn btn-icon bg-emerald-600/5 hover:bg-emerald-600 border-emerald-600/10 hover:border-emerald-600 text-emerald-600 hover:text-white end-0"><i data-feather="bookmark" class="size-4"></i></a>
                     </div>
-
-                    <div class="px-6 py-2 bg-slate-50 dark:bg-slate-800 lg:flex justify-between items-center">
-                        <div class="lg:inline-block flex justify-between">
-                            <span class="inline-block me-1 font-semibold"><i class="mdi mdi-check-decagram mdi-18px text-blue-500 me-1"></i>Verified</span>
-                            <ul class="list-none inline-block me-1 text-yellow-400 space-x-0.5">
-                                <li class="inline"><i class="mdi mdi-star text-lg"></i></li>
-                                <li class="inline"><i class="mdi mdi-star text-lg"></i></li>
-                                <li class="inline"><i class="mdi mdi-star text-lg"></i></li>
-                                <li class="inline"><i class="mdi mdi-star text-lg"></i></li>
-                                <li class="inline"><i class="mdi mdi-star text-lg"></i></li>
-                                <li class="inline text-slate-400 font-semibold">4.8</li>
-                            </ul>
-                            <span class="inline-block me-1 text-slate-400"><i class="uil uil-map-marker text-[18px] text-slate-900 dark:text-white me-1"></i>Australia</span>
-                        </div>
-
-                        <a href="job-apply.html" class="btn btn-sm rounded-md bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 text-white md:ms-2 w-full lg:w-auto lg:mt-0 mt-4">Apply Now</a>
-                    </div>
-
-                    <a href="" class="btn btn-icon rounded-full bg-emerald-600/5 hover:bg-emerald-600 border-emerald-600/10 hover:border-emerald-600 text-emerald-600 hover:text-white absolute top-0 end-0 m-3"><i data-feather="bookmark" class="size-4"></i></a>
-                </div>
+                @endforeach
             </div>
 
-            <div class="grid md:grid-cols-12 grid-cols-1 mt-8">
-                <div class="md:col-span-12 text-center">
-                    <a href="job-grid-two.html" class="btn btn-link text-slate-400 hover:text-emerald-600 after:bg-emerald-600 duration-500 ease-in-out">See More Jobs <i class="uil uil-arrow-right align-middle"></i></a>
+            <div class="grid grid-cols-1 mt-8 md:grid-cols-12">
+                <div class="text-center md:col-span-12">
+                    <a href="job-grid-two.html" class="duration-500 ease-in-out btn btn-link text-slate-400 hover:text-emerald-600 after:bg-emerald-600">See More Jobs <i class="align-middle uil uil-arrow-right"></i></a>
                 </div>
             </div>
         </div>

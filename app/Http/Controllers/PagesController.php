@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Trainee;
+use App\Models\TrainingProgram;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
     public function home()
     {
-        return view('frontend.index');
+        $trainingPrograms = TrainingProgram::orderBy('id', 'desc')->get();
+
+        return view('frontend.index', compact('trainingPrograms'));
     }
 
     public function getTrades()
