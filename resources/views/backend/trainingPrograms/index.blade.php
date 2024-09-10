@@ -41,7 +41,7 @@
                                             <button type="submit" class="text-red-600 bg-red-100 border-0 rounded tag dark:text-red-100 dark:bg-red-500/20">Delete</button>
                                         </form>
                                         @if(auth()->user()->role === 'institution' && $program->status === 'pending')
-                                            <span class="text-blue-600">Application Sent</span>
+                                            <span class="text-blue-600 bg-blue-100 border-0 rounded tag">Application Sent</span>
                                         @elseif(auth()->user()->role === 'institution')
                                             <form action="{{ route('sendApplication', $program->id) }}" method="POST">
                                                 @csrf

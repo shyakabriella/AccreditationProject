@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('entry_requirements')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->enum('status', ['none', 'pending', 'approved', 'rejected'])->default('none');
             $table->text('admin_comments')->nullable();
             $table->timestamps();
 

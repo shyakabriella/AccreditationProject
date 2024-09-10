@@ -7,11 +7,12 @@ use App\Models\Module;
 use App\Models\Institution;
 use Illuminate\Http\Request;
 use App\Models\TrainingProgram;
+use App\Models\ProgramApplicant;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Models\ProgramApplicant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\TrainingProgramApplication;
 
 class PagesController extends Controller
 {
@@ -161,6 +162,23 @@ class PagesController extends Controller
                         ->with('success', 'Training program deleted successfully!');
     }
 
+    public function sendApplication(Request $request, $programId)
+    {
+        // Create a new application for the given training program
+        $application = new TrainingProgramApplication();
+        $application->training_program_id = $programId;
+        $application->user_id = auth()->id();
+        $application->status = 'pending';
+        $application->save();
+
+        // Update the status of the training program to 'pending'
+        $trainingProgram = TrainingProgram::findOrFail($programId);
+        $trainingProgram->status = 'pending';
+        $trainingProgram->save();
+
+        return redirect()->back()->with('success', 'Application sent successfully and program status updated to pending.');
+    }
+
     public function updateApplicationStatus(Request $request)
     {
         // Validate the request
@@ -260,20 +278,5 @@ class PagesController extends Controller
 
         // Redirect with a success message
         return redirect()->route('dashboard', $id)->with('success', 'Institution profile updated successfully.');
-    }
-
-    public function sendApplication($id)
-    {
-        $program = TrainingProgram::find($id);
-
-        // Check if the user is authenticated and if they are the institution that owns the program
-        if (auth()->user()->role === 'institution' && auth()->user()->id == $program->institution_id) {
-            $program->status = 'pending';
-            $program->save();
-
-            return redirect()->back()->with('success', 'Application sent to admin for approval.');
-        }
-
-        return redirect()->back()->with('error', 'Unauthorized action.');
     }
 }

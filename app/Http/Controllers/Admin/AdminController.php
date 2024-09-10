@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\TrainingProgram;
 use App\Http\Controllers\Controller;
+use App\Models\TrainingProgramApplication;
 
 class AdminController extends Controller
 {
@@ -15,33 +16,25 @@ class AdminController extends Controller
         return view('backend.getProgramApplications', compact('requests'));
     }
 
-    public function approveProgram(Request $request, $id)
+    // Approve Application
+    public function approveApplication(Request $request, $applicationId)
     {
-        $program = TrainingProgram::find($id);
+        $application = TrainingProgramApplication::findOrFail($applicationId);
+        $application->status = 'approved';
+        $application->reason = $request->reason;
+        $application->save();
 
-        if (auth()->user()->role === 'admin') {
-            $program->status = 'approved';
-            $program->admin_comments = $request->input('admin_comments');
-            $program->save();
-
-            return redirect()->back()->with('success', 'Program approved.');
-        }
-
-        return redirect()->back()->with('error', 'Unauthorized action.');
+        return redirect()->back()->with('success', 'Application approved successfully.');
     }
 
-    public function rejectProgram(Request $request, $id)
+    // Reject Application
+    public function rejectApplication(Request $request, $applicationId)
     {
-        $program = TrainingProgram::find($id);
+        $application = TrainingProgramApplication::findOrFail($applicationId);
+        $application->status = 'rejected';
+        $application->reason = $request->reason;
+        $application->save();
 
-        if (auth()->user()->role === 'admin') {
-            $program->status = 'rejected';
-            $program->admin_comments = $request->input('admin_comments');
-            $program->save();
-
-            return redirect()->back()->with('success', 'Program rejected.');
-        }
-
-        return redirect()->back()->with('error', 'Unauthorized action.');
+        return redirect()->back()->with('success', 'Application rejected successfully.');
     }
 }
