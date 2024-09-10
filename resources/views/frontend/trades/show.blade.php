@@ -71,6 +71,24 @@
                                 </li>
 
                                 <li class="flex items-center mt-3">
+                                    <i data-feather="book" class="size-5"></i>
+
+                                    <div class="ms-4">
+                                        <p class="font-medium">Entry Requirements:</p>
+                                        <span class="text-sm font-medium text-emerald-600">{{ $program->entry_requirements }}</span>
+                                    </div>
+                                </li>
+
+                                <li class="flex items-center mt-3">
+                                    <i data-feather="dollar-sign" class="size-5"></i>
+
+                                    <div class="ms-4">
+                                        <p class="font-medium">Source of Competency</p>
+                                        <span class="text-sm font-medium text-emerald-600">{{ $program->source_of_competency }}</span>
+                                    </div>
+                                </li>
+
+                                <li class="flex items-center mt-3">
                                     <i data-feather="clock" class="size-5"></i>
 
                                     <div class="ms-4">
