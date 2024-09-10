@@ -104,10 +104,17 @@
                 </div>
 
                 <div class="lg:col-span-8 md:col-span-6">
-                    <h5 class="text-lg font-semibold">Job Description:</h5>
+                    <h4 class="font-semibold">Modules:</h4>
+                    @foreach($program->modules as $module)
+                    <span class="bg-slate-100 dark:bg-slate-800 inline-block text-slate-900 dark:text-slate-300 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">
+                            {{ $module->module_name }} ({{ $module->module_duration }} hrs)
+                        </span>
+                    @endforeach
+
+                    <h5 class="text-lg font-semibold">Training Description:</h5>
 
                     <p class="mt-4 text-slate-400">
-                        One disadvantage of Lorum Ipsum is that in Latin certain letters appear more frequently than others - which creates a distinct visual impression. Moreover, in Latin only words at the beginning of sentences are capitalized.
+                        {!! $program->description !!}
                     </p>
 
                     <div class="mt-5">
