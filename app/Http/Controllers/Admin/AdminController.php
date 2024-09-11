@@ -16,13 +16,6 @@ class AdminController extends Controller
         return view('backend.getProgramApplications.index', compact('requests'));
     }
 
-    public function trainingRequestDetails($id)
-    {
-        $request = TrainingProgramApplication::findOrFail($id);
-
-        return view('backend.getProgramApplicationDetails.show', compact('request'));
-    }
-
     // Approve Application
     public function approveApplication(Request $request, $applicationId)
     {
@@ -59,5 +52,12 @@ class AdminController extends Controller
         $trainingProgram->save();
 
         return redirect()->back()->with('success', 'Application rejected successfully, and training program status updated.');
+    }
+
+    public function trainingRequestDetails($id)
+    {
+        $request = TrainingProgramApplication::findOrFail($id);
+
+        return view('backend.getProgramApplicationDetails.show', compact('request'));
     }
 }
