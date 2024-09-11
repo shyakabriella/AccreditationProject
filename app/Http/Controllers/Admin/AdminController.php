@@ -58,6 +58,6 @@ class AdminController extends Controller
     {
         $request = TrainingProgramApplication::findOrFail($id);
 
-        return view('backend.getProgramApplicationDetails.show', compact('request'));
+        return view('backend.getProgramApplications.show', compact('request'));
     }
 }

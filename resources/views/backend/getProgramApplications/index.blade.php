@@ -39,7 +39,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ url('trainingRequestDetails', $request->id) }}" class="text-white bg-yellow-100 border-0 rounded tag dark:text-yellow-100 dark:bg-yellow-500/20" style="background: blue;">
+                                        <a href="{{ route('trainingRequestDetails', $request->id) }}" class="text-white bg-yellow-100 border-0 rounded tag dark:text-yellow-100 dark:bg-yellow-500/20" style="background: blue;">
                                             View Details
                                         </a>
                                         @if ($request->status == 'pending')
