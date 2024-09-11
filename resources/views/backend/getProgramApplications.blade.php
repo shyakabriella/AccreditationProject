@@ -36,12 +36,12 @@
                                     <td>{{ ucfirst($request->status) }}</td>
                                     <td>
                                         @if ($request->status == 'pending')
-                                            <form action="{{ route('approveProgram', $request->id) }}" method="POST" style="display:inline;">
+                                            <form action="{{ route('approveApplication', $request->id) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 <button type="submit" class="text-green-600 bg-green-100 border-0 rounded tag dark:bg-green-500/20 dark:text-green-100">Approve</button>
                                             </form>
 
-                                            <form action="{{ route('rejectProgram', $request->id) }}" method="POST" style="display:inline;">
+                                            <form action="{{ route('rejectApplication', $request->id) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 <button type="submit" class="text-red-600 bg-red-100 border-0 rounded tag dark:bg-red-500/20 dark:text-red-100">Reject</button>
                                             </form>

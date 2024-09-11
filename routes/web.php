@@ -10,6 +10,12 @@ Route::get('/programs', [App\Http\Controllers\PagesController::class, 'getTrades
 Route::get('/program/{id}', [App\Http\Controllers\PagesController::class, 'getTradeDetails'])->name('getTradeDetails');
 Route::post('/programs/{id}/apply', [App\Http\Controllers\PagesController::class, 'apply'])->name('programApply');
 
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/training-requests', [App\Http\Controllers\Admin\AdminController::class, 'trainingRequests'])->name('trainingRequests');
+    Route::post('/training-programs/{id}/approve', [App\Http\Controllers\Admin\AdminController::class, 'approveApplication'])->name('approveApplication');
+    Route::post('/training-programs/{id}/reject', [App\Http\Controllers\Admin\AdminController::class, 'rejectApplication'])->name('rejectApplication');
+});
+
 Route::middleware(['auth', 'role:admin,institution,company'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\PagesController::class, 'dashboard'])->name('dashboard');
     Route::get('/training-programs/create', [App\Http\Controllers\Admin\PagesController::class, 'createTrainingProgram'])->name('createTrainingProgram');
@@ -28,12 +34,6 @@ Route::middleware(['auth', 'role:admin,institution,company'])->group(function ()
 
 });
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/training-requests', [App\Http\Controllers\Admin\AdminController::class, 'trainingRequests'])->name('trainingRequests');
-    Route::post('/training-programs/{id}/approve', [App\Http\Controllers\Admin\AdminController::class, 'approveProgram'])->name('approveProgram');
-    Route::post('/training-programs/{id}/reject', [App\Http\Controllers\Admin\AdminController::class, 'rejectProgram'])->name('rejectProgram');
-});
-
 Route::middleware(['auth', 'role:institution'])->group(function () {
     //
 });
@@ -41,7 +41,6 @@ Route::middleware(['auth', 'role:institution'])->group(function () {
 Route::middleware(['auth', 'role:company'])->group(function () {
     //
 });
-
 
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/profile/{id}', [App\Http\Controllers\PagesController::class, 'getTraineeProfile'])->name('getTraineeProfile');
