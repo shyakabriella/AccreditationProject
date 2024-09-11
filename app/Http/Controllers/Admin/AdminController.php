@@ -13,7 +13,14 @@ class AdminController extends Controller
     {
         $requests = TrainingProgramApplication::with('trainingProgram', 'user')->orderBy('created_at', 'desc')->get();
 
-        return view('backend.getProgramApplications', compact('requests'));
+        return view('backend.getProgramApplications.index', compact('requests'));
+    }
+
+    public function trainingRequestDetails($id)
+    {
+        $request = TrainingProgramApplication::findOrFail($id);
+
+        return view('backend.getProgramApplicationDetails.show', compact('request'));
     }
 
     // Approve Application
