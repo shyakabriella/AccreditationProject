@@ -3,7 +3,7 @@
 @section('content')
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-  
+
   <!-- Bootstrap Icons (optional for icons) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 <!-- Chart.js -->
@@ -11,7 +11,7 @@
 
   <div class="container py-4">
   <div class="d-flex flex-wrap gap-3 justify-content-between">
-    
+
     <!-- Card 1 -->
     <div class="card shadow-sm" style="width: 18rem;">
       <div class="card-body">
@@ -91,14 +91,14 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 </div>
 
 
 <div class="container py-4">
   <div class="row g-4">
-    
+
     <!-- Line Chart -->
     <div class="col-lg-6">
       <div class="card">

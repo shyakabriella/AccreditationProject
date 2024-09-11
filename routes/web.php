@@ -12,6 +12,7 @@ Route::post('/programs/{id}/apply', [App\Http\Controllers\PagesController::class
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/training-requests', [App\Http\Controllers\Admin\AdminController::class, 'trainingRequests'])->name('trainingRequests');
+    Route::get('/training-request/{id}', [App\Http\Controllers\Admin\AdminController::class, 'trainingRequestDetails'])->name('trainingRequestDetails');
     Route::post('/training-programs/{id}/approve', [App\Http\Controllers\Admin\AdminController::class, 'approveApplication'])->name('approveApplication');
     Route::post('/training-programs/{id}/reject', [App\Http\Controllers\Admin\AdminController::class, 'rejectApplication'])->name('rejectApplication');
 });
