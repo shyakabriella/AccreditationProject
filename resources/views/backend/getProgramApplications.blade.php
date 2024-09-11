@@ -33,17 +33,27 @@
                                     <td>{{ $request->trainingProgram->training_duration }}</td>
                                     <td>{{ $request->trainingProgram->entry_requirements }}</td>
                                     <td>{{ $request->user->name }}</td>
-                                    <td>{{ ucfirst($request->status) }}</td>
+                                    <td>
+                                        @if ($request->status == 'pending')
+                                            <span class="text-white bg-yellow-100 border-0 rounded tag dark:text-yellow-100 dark:bg-yellow-500/20" style="background: orange;">Pending</span>
+                                        @elseif ($request->status == 'rejected')
+                                            <span class="text-white bg-red-100 border-0 rounded tag dark:text-red-100 dark:bg-red-500/20" style="background: red;">Rejected</span>
+                                        @elseif ($request->status == 'approved')
+                                            <span class="text-white bg-green-100 border-0 rounded tag dark:text-green-100 dark:bg-green-500/20" style="background: green;">Approved</span>
+                                        @else
+                                            <span class="w-full text-white bg-gray-500 border-gray-500 rounded-md btn hover:bg-gray-600 hover:border-gray-600 md:ms-2 md:w-auto" style="background: gray;">Unknown</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         @if ($request->status == 'pending')
                                             <form action="{{ route('approveApplication', $request->id) }}" method="POST" style="display:inline;">
                                                 @csrf
-                                                <button type="submit" class="text-green-600 bg-green-100 border-0 rounded tag dark:bg-green-500/20 dark:text-green-100">Approve</button>
+                                                <button type="submit" class="text-white bg-green-100 border-0 rounded tag dark:text-green-100 dark:bg-green-500/20" style="background: green;">Approve</button>
                                             </form>
 
                                             <form action="{{ route('rejectApplication', $request->id) }}" method="POST" style="display:inline;">
                                                 @csrf
-                                                <button type="submit" class="text-red-600 bg-red-100 border-0 rounded tag dark:bg-red-500/20 dark:text-red-100">Reject</button>
+                                                <button type="submit" class="text-white bg-red-100 border-0 rounded tag dark:text-red-100 dark:bg-red-500/20" style="background: red;">Reject</button>
                                             </form>
                                         @else
                                             <span class="text-slate-500">{{ ucfirst($request->status) }}</span>
