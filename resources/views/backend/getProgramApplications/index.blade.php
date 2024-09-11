@@ -12,13 +12,10 @@
                     <table id="training-program-requests-data-table" class="table-default table-hover data-table">
                         <thead>
                             <tr>
+                                <th>Institution Name</th>
                                 <th>Program Name</th>
                                 <th>Source of Competency</th>
-                                <th>Module Duration</th>
-                                <th>Number of Trainees</th>
                                 <th>Training Duration</th>
-                                <th>Entry Requirements</th>
-                                <th>Applicant Name</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -26,13 +23,10 @@
                         <tbody>
                             @foreach ($requests as $request)
                                 <tr>
+                                    <td>{{ $request->trainingProgram->institution->name }}</td>
                                     <td>{{ $request->trainingProgram->name }}</td>
                                     <td>{{ $request->trainingProgram->source_of_competency }}</td>
-                                    <td>{{ $request->trainingProgram->module_duration }}</td>
-                                    <td>{{ $request->trainingProgram->number_of_trainees }}</td>
                                     <td>{{ $request->trainingProgram->training_duration }}</td>
-                                    <td>{{ $request->trainingProgram->entry_requirements }}</td>
-                                    <td>{{ $request->user->name }}</td>
                                     <td>
                                         @if ($request->status == 'pending')
                                             <span class="text-white bg-yellow-100 border-0 rounded tag dark:text-yellow-100 dark:bg-yellow-500/20" style="background: orange;">Pending</span>
