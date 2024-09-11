@@ -13,21 +13,23 @@ class PagesController extends Controller
 {
     public function home()
     {
-        $trainingPrograms = TrainingProgram::orderBy('id', 'desc')->get();
+        $trainingPrograms = TrainingProgram::where('status', 'approved')->orderBy('id', 'desc')->get();
 
         return view('frontend.index', compact('trainingPrograms'));
     }
 
     public function getTrades()
     {
-        $trainingPrograms = TrainingProgram::orderBy('id', 'desc')->get();
+        $trainingPrograms = TrainingProgram::where('status', 'approved')
+            ->orderBy('id', 'desc')
+            ->get();
 
         return view('frontend.trades.index', compact('trainingPrograms'));
     }
 
     public function getTradeDetails($id)
     {
-        $program = TrainingProgram::findOrFail($id);
+        $program = TrainingProgram::where('status', 'approved')->findOrFail($id);
 
         return view('frontend.trades.show', compact('program'));
     }
