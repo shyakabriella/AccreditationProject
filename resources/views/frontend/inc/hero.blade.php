@@ -34,7 +34,7 @@
                                             </select>
                                         </div>
 
-                                        <input type="submit" id="search" name="search" style="height: 60px;" class="text-white btn bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 searchbtn submit-btn w-100" value="Search">
+                                        <a href="{{ route('getTrades') }}" style="height: 60px;" class="text-white btn bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 searchbtn submit-btn w-100">Search</a>
                                     </div>
                                 </div>
                             </form>

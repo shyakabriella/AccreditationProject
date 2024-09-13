@@ -6,7 +6,7 @@
     <section class="relative py-16 bg-slate-50 dark:bg-slate-800 md:py-24">
         <div class="container">
             <div class="grid grid-cols-1 pb-8 text-center">
-                <h3 class="mb-4 md:text-[26px] md:leading-normal text-2xl leading-normal font-semibold">Popular Jobs</h3>
+                <h3 class="mb-4 md:text-[26px] md:leading-normal text-2xl leading-normal font-semibold">Popular Trainings</h3>
 
                 <p class="max-w-xl mx-auto text-slate-400">Search all the open positions on the web. Get your own personalized salary estimate. Read reviews on over 30000+ companies worldwide.</p>
             </div>
@@ -61,7 +61,10 @@
 
             <div class="grid grid-cols-1 mt-8 md:grid-cols-12">
                 <div class="text-center md:col-span-12">
-                    <a href="job-grid-two.html" class="duration-500 ease-in-out btn btn-link text-slate-400 hover:text-emerald-600 after:bg-emerald-600">See More Jobs <i class="align-middle uil uil-arrow-right"></i></a>
+                    <a href="{{ route('getTrades') }}" class="duration-500 ease-in-out btn btn-link text-slate-400 hover:text-emerald-600 after:bg-emerald-600">
+                        See More Trainings
+                        <i class="align-middle uil uil-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
