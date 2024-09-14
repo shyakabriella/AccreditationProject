@@ -37,9 +37,8 @@
                                     </a>
                                     <span class="inline-block text-sm text-slate-400">{{ $program->created_at->diffForHumans() }}</span>
                                     <div>
-                                        <span class="bg-emerald-600/10 inline-block text-emerald-600 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">Full Time</span>
-                                        <span class="inline-block text-sm font-medium me-1">Est. time: <span class="text-slate-400">{{ $program->training_duration }} Months</span></span>
-                                        <span class="inline-block text-sm font-medium me-1">Duration: <span class="text-slate-400">{{ $program->module_duration }} hrs</span></span>
+                                        <span class="inline-block text-sm font-medium me-1">Tratining Duration: <span class="text-slate-400">{{ $program->training_duration }} Months</span></span>
+                                        <span class="inline-block text-sm font-medium me-1">Modules Duration: <span class="text-slate-400">{{ $program->module_duration }} hrs</span></span>
                                     </div>
                                 </div>
                             </div>

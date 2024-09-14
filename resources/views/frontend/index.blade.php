@@ -8,7 +8,9 @@
             <div class="grid grid-cols-1 pb-8 text-center">
                 <h3 class="mb-4 md:text-[26px] md:leading-normal text-2xl leading-normal font-semibold">Popular Trainings</h3>
 
-                <p class="max-w-xl mx-auto text-slate-400">Search all the open positions on the web. Get your own personalized salary estimate. Read reviews on over 30000+ companies worldwide.</p>
+                <p class="max-w-xl mx-auto text-slate-400">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto, iste laudantium officiis dolore hic natus reiciendis architecto eaque repudiandae tempore!
+                </p>
             </div>
 
             <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
@@ -26,9 +28,8 @@
                                     </a>
                                     <span class="inline-block text-sm text-slate-400">{{ $program->created_at->diffForHumans() }}</span>
                                     <div>
-                                        <span class="bg-emerald-600/10 inline-block text-emerald-600 text-xs px-2.5 py-0.5 font-semibold rounded-full me-1">Full Time</span>
-                                        <span class="inline-block text-sm font-medium me-1">Est. time: <span class="text-slate-400">{{ $program->training_duration }} Months</span></span>
-                                        <span class="inline-block text-sm font-medium me-1">Duration: <span class="text-slate-400">{{ $program->module_duration }} hrs</span></span>
+                                        <span class="inline-block text-sm font-medium me-1">Tratining Duration: <span class="text-slate-400">{{ $program->training_duration }} Months</span></span>
+                                        <span class="inline-block text-sm font-medium me-1">Modules Duration: <span class="text-slate-400">{{ $program->module_duration }} hrs</span></span>
                                     </div>
                                 </div>
                             </div>
