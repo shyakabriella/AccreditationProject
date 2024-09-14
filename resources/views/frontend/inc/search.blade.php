@@ -19,11 +19,10 @@
                                 <div class="relative filter-search-form filter-border">
                                     <i class="uil uil-briefcase-alt icons"></i>
                                     <select class="form-select" data-trigger name="choices-type" id="choices-type" aria-label="Default select example">
-                                        <option selected="" value="1">Full Time</option>
-                                        <option value="2">Part Time</option>
-                                        <option value="3">Freelancer</option>
-                                        <option value="4">Remote Work</option>
-                                        <option value="5">Office Work</option>
+                                        <option selected="" value="1">3 Months</option>
+                                                <option value="2">3 Months</option>
+                                                <option value="3">6 Months</option>
+                                                <option value="4">1 Year</option>
                                     </select>
                                 </div>
                                 <input type="submit" id="search" name="search" style="height: 60px;" class="text-white btn bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 searchbtn submit-btn w-100" value="Search">
