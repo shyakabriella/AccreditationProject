@@ -2,8 +2,10 @@
     <div class="absolute inset-0 bg-emerald-600/5 dark:bg-emerald-600/10"></div>
     <div class="container z-1">
         <div class="relative grid grid-cols-1 mt-10 text-center">
-            <h4 class="mb-5 text-4xl font-bold leading-normal lg:leading-normal lg:text-5xl">Join us & <span class="font-bold text-emerald-600">Explore</span> <br> <span class="font-bold text-emerald-600">Thousands</span> of Jobs</h4>
-            <p class="max-w-xl mx-auto text-lg text-slate-400">Find Jobs, Employment & Career Opportunities. Some of the companies we've helped recruit excellent applicants over the years.</p>
+            <h4 class="mb-5 text-4xl font-bold leading-normal lg:leading-normal lg:text-5xl">Join us <span class="font-bold text-emerald-600">Accreditation</span> <br> Webapp</h4>
+            <p class="max-w-xl mx-auto text-lg text-slate-400">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex optio magni nulla quas fugit pariatur quod nam odio in fugiat?
+            </p>
 
             <div class="d-flex" id="reserve-form">
                 <div class="mx-auto md:w-5/6">
@@ -27,53 +29,19 @@
                                         <div class="relative filter-search-form filter-border">
                                             <i class="uil uil-briefcase-alt icons"></i>
                                             <select class="form-select" data-trigger name="choices-type" id="choices-type" aria-label="Default select example">
-                                                <option selected="" value="1">Full Time</option>
-                                                <option value="2">Part Time</option>
-                                                <option value="3">Freelancer</option>
-                                                <option value="4">Remote Work</option>
+                                                <option selected="" value="1">3 Months</option>
+                                                <option value="2">3 Months</option>
+                                                <option value="3">6 Months</option>
+                                                <option value="4">1 Year</option>
                                             </select>
                                         </div>
 
-                                        <a href="{{ route('getTrades') }}" style="height: 60px;" class="text-white btn bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 searchbtn submit-btn w-100">Search</a>
+                                        <button class="text-white btn bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 searchbtn submit-btn w-100">Search</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="mt-4">
-                <span class="text-slate-400"><span class="text-dark">Popular Searches :</span> Designer, Developer, Web, IOS, PHP Senior Engineer</span>
-            </div>
-
-            <div class="absolute -translate-x-1/2 -top-20 start-1/2">
-                <div class="size-10 animate-[bounce_2s_infinite] bg-white dark:bg-slate-900 flex items-center justify-center shadow dark:shadow-gray-700 rounded-md">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png" class="size-6"  alt="">
-                </div>
-            </div>
-
-            <div class="absolute top-[20%] start-10">
-                <div class="size-10 animate-[spin_5s_linear_infinite] bg-white dark:bg-slate-900 flex items-center justify-center shadow dark:shadow-gray-700 rounded-md">
-                    <img src="https://e7.pngegg.com/pngimages/704/688/png-clipart-google-google.png" class="size-6"  alt="">
-                </div>
-            </div>
-
-            <div class="absolute top-[20%] end-1">
-                <div class="flex items-center justify-center bg-white rounded-md shadow size-10 dark:bg-slate-900 dark:shadow-gray-700">
-                    <img src="https://w7.pngwing.com/pngs/574/270/png-transparent-android-figurine-illustration-android-application-software-android-logo-logo-mobile-app-development-android-software-development.png" class="size-6"  alt="">
-                </div>
-            </div>
-
-            <div class="absolute top-3/4 start-1">
-                <div class="flex items-center justify-center bg-white rounded-md shadow size-10 dark:bg-slate-900 dark:shadow-gray-700">
-                    <img src="https://logodownload.org/wp-content/uploads/2019/10/adobe-photoshop-logo-0.png" class="size-6"  alt="">
-                </div>
-            </div>
-
-            <div class="absolute top-3/4 end-10">
-                <div class="size-10 animate-[spin_5s_linear_infinite] bg-white dark:bg-slate-900 flex items-center justify-center shadow dark:shadow-gray-700 rounded-md">
-                    <img src="https://w7.pngwing.com/pngs/512/824/png-transparent-visual-studio-code-hd-logo-thumbnail.png" class="size-6"  alt="">
                 </div>
             </div>
         </div>
