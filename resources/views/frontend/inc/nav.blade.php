@@ -85,7 +85,7 @@
                 </li>
                 <li>
                     <a href="{{ route('getTrades') }}" class="sub-menu-item">
-                        Training Programs
+                        Courses
                     </a>
                 </li>
                 <li>
