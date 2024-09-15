@@ -3,8 +3,8 @@
     <div class="container z-1">
         <div class="relative grid grid-cols-1 mt-10 text-center">
             <h4 class="mb-5 text-4xl font-bold leading-normal lg:leading-normal lg:text-5xl">Short Course <span class="font-bold text-emerald-600">Accreditation</span> <br> Webapp</h4>
-            <p class="max-w-xl mx-auto text-lg text-slate-400">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex optio magni nulla quas fugit pariatur quod nam odio in fugiat?
+            <p class="mx-auto text-lg text-slate-400">
+                SCAW designed to streamline the process of applying for school accreditation in Rwanda under the Rwanda TVET Board (RTB). The system will enable schools to apply for accreditation, manage student portfolios, and receive RTB certification entirely online. The system will also facilitate communication between schools, students, and RTB, eliminating the need for physical visits and paperwork.
             </p>
 
             <div class="d-flex" id="reserve-form">
