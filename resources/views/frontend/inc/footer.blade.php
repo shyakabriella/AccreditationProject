@@ -18,7 +18,7 @@
                                     </a>
                                 </li>
                                 <li class="inline-block">
-                                    <a href="{{ route('home') }}" class="font-medium text-gray-300 duration-500 ease-in-out hover:text-gray-400">
+                                    <a href="{{ route('about') }}" class="font-medium text-gray-300 duration-500 ease-in-out hover:text-gray-400">
                                         About
                                     </a>
                                 </li>
