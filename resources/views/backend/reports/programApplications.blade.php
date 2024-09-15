@@ -24,6 +24,7 @@
     <table>
         <thead>
             <tr>
+                <th>No.</th>
                 <th>Program</th>
                 <th>Name</th>
                 <th>Date of Birth</th>
@@ -34,16 +35,23 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $counter = 1;
+            @endphp
             @foreach($applications as $application)
-            <tr>
-                <td>{{ $application->trainingProgram->name }}</td>
-                <td>{{ $application->trainee->user->name }}</td>
-                <td>{{ $application->trainee->date_of_birth }}</td>
-                <td>{{ $application->trainee->phone }}</td>
-                <td>{{ $application->trainee->address }}</td>
-                <td>{{ $application->trainee->education_level }}</td>
-                <td>{{ $application->status }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $counter }}</td>
+                    <td>{{ $application->trainingProgram->name }}</td>
+                    <td>{{ $application->trainee->user->name }}</td>
+                    <td>{{ $application->trainee->date_of_birth }}</td>
+                    <td>{{ $application->trainee->phone }}</td>
+                    <td>{{ $application->trainee->address }}</td>
+                    <td>{{ $application->trainee->education_level }}</td>
+                    <td>{{ $application->status }}</td>
+                </tr>
+            @php
+                $counter++;
+            @endphp
             @endforeach
         </tbody>
     </table>

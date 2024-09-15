@@ -24,6 +24,7 @@
     <table>
         <thead>
             <tr>
+                <th>No.</th>
                 <th>Name</th>
                 <th>Source of Competency</th>
                 <th>Module Duration</th>
@@ -33,15 +34,22 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $counter = 1;
+            @endphp
             @foreach($trainingPrograms as $program)
                 <tr>
+                    <td>{{ $counter }}</td>
                     <td>{{ $program->name }}</td>
                     <td>{{ $program->source_of_competency }}</td>
                     <td>{{ $program->module_duration }}</td>
                     <td>{{ $program->number_of_trainees }}</td>
-                    <td>{{ $program->training_duration }}</td>
+                    <td>{{ $program->training_duration }} Months</td>
                     <td>{{ $program->entry_requirements }}</td>
                 </tr>
+                @php
+                    $counter++;
+                @endphp
             @endforeach
         </tbody>
     </table>

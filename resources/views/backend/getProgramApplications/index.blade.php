@@ -8,7 +8,7 @@
                 <div class="flex items-center justify-between mb-4">
                     <h3>Training Program Applications</h3>
                     <!-- Download Report Button -->
-                    <a href="{{ route('trainingProgramApplicationsReport') }}" class="px-4 py-2 text-white bg-blue-600 rounded-lg shadow-sm btn hover:bg-blue-500">
+                    <a href="{{ route('trainingProgramApplicationsReport') }}" class="btn btn-solid">
                         Download Report (PDF)
                     </a>
                 </div>

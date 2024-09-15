@@ -37,6 +37,7 @@
     <table>
         <thead>
             <tr>
+                <th>No.</th>
                 <th>Institution Name</th>
                 <th>Program Name</th>
                 <th>Source of Competency</th>
@@ -45,14 +46,21 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $counter = 1;
+            @endphp
             @foreach ($applications as $application)
                 <tr>
+                    <td>{{ $counter }}</td>
                     <td>{{ $application->trainingProgram->institution->name }}</td>
                     <td>{{ $application->trainingProgram->name }}</td>
                     <td>{{ $application->trainingProgram->source_of_competency }}</td>
                     <td>{{ $application->trainingProgram->training_duration }} Months</td>
                     <td>{{ ucfirst($application->status) }}</td>
                 </tr>
+                @php
+                    $counter++;
+                @endphp
             @endforeach
         </tbody>
     </table>
