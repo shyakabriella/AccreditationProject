@@ -14,7 +14,7 @@
                             @csrf
                             <div class="form-container vertical">
                                 <div>
-                                    <h3 style="color: #065F46; font-weight: 700">Institution Information</h3>
+                                    <h5 style="color: #065F46; font-weight: 700">Institution Information</h5>
                                     <p>Update your institution's details.</p>
                                 </div>
 
