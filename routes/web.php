@@ -7,6 +7,7 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\PagesController::class, 'home'])->name('home');
 Route::get('/about', [App\Http\Controllers\PagesController::class, 'about'])->name('about');
+Route::get('/contact', [App\Http\Controllers\PagesController::class, 'contact'])->name('contact');
 Route::get('/programs', [App\Http\Controllers\PagesController::class, 'getTrades'])->name('getTrades');
 Route::get('/program/{id}', [App\Http\Controllers\PagesController::class, 'getTradeDetails'])->name('getTradeDetails');
 Route::post('/programs/{id}/apply', [App\Http\Controllers\PagesController::class, 'apply'])->name('programApply');

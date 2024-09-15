@@ -89,7 +89,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('home') }}" class="sub-menu-item">
+                    <a href="{{ route('contact') }}" class="sub-menu-item">
                         Contacts
                     </a>
                 </li>
