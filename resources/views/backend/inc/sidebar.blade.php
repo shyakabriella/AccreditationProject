@@ -1,7 +1,7 @@
 <div class="side-nav side-nav-transparent side-nav-expand">
     <div class="side-nav-header">
         <div class="px-6 py-24">
-            <h2 class="text-center text-dark" style="font-size: 16px; padding-top: 10px">SCAW</h2>
+            <h2 class="text-center text-dark" style="font-size: 28px; padding-top: 10px; color: #065F46;">SCAW</h2>
         </div>
     </div>
     <div class="relative side-nav-content side-nav-scroll">
