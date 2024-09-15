@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use PDF;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Module;
@@ -60,6 +61,18 @@ class PagesController extends Controller
             ->get();
 
         return view('backend.trainingPrograms.index', compact('trainingPrograms'));
+    }
+
+    public function generateTrainingProgramReport()
+    {
+        $institutionId = auth()->user()->institution->id;
+        $trainingPrograms = TrainingProgram::where('institution_id', $institutionId)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $pdf = PDF::loadView('backend.reports.trainingPrograms', compact('trainingPrograms'));
+
+        return $pdf->download('training_programs_report.pdf');
     }
 
     public function createTrainingProgram()
