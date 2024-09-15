@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\TrainingProgram;
 use App\Http\Controllers\Controller;
 use App\Models\TrainingProgramApplication;
+use PDF;
 
 class AdminController extends Controller
 {
@@ -14,6 +15,18 @@ class AdminController extends Controller
         $requests = TrainingProgramApplication::with('trainingProgram', 'user')->orderBy('created_at', 'desc')->get();
 
         return view('backend.getProgramApplications.index', compact('requests'));
+    }
+
+    public function generateReport()
+    {
+        // Get all the applications to include in the report
+        $applications = TrainingProgramApplication::with('trainingProgram.institution', 'user')->get();
+
+        // Load the view and pass the applications data
+        $pdf = PDF::loadView('backend.reports.training_program_applications', compact('applications'));
+
+        // Download the PDF with a filename
+        return $pdf->download('training_program_applications_report.pdf');
     }
 
     // Approve Application

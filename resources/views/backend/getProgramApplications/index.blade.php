@@ -7,6 +7,10 @@
             <div class="card-body">
                 <div class="flex items-center justify-between mb-4">
                     <h3>Training Program Applications</h3>
+                    <!-- Download Report Button -->
+                    <a href="{{ route('trainingProgramApplicationsReport') }}" class="px-4 py-2 text-white bg-blue-600 rounded-lg shadow-sm btn hover:bg-blue-500">
+                        Download Report (PDF)
+                    </a>
                 </div>
                 <div class="overflow-x-auto">
                     <table id="training-program-requests-data-table" class="table-default table-hover data-table">
