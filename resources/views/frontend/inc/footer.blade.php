@@ -7,7 +7,7 @@
                         <div class="md:col-span-3">
                             <a href="#" class="flex justify-center md:justify-start focus:outline-none">
                                 {{-- <img src="assets/images/logo-light.png" class="" alt=""> --}}
-                                Accreditation App
+                                SCAW
                             </a>
                         </div>
                         <div class="md:col-span-9">
@@ -44,7 +44,7 @@
         <div class="container text-center">
             <div class="grid items-center gap-6 md:grid-cols-2">
                 <div class="text-center md:text-start">
-                    <p class="mb-0 font-medium text-gray-300">© <script>document.write(new Date().getFullYear())</script> Accreditation</p>
+                    <p class="mb-0 font-medium text-gray-300">© <script>document.write(new Date().getFullYear())</script> SCAW</p>
                 </div>
             </div>
         </div>

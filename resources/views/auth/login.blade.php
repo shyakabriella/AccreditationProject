@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Accreditation - Sign Up</title>
+        <title>SCAW - Sign Up</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/style.css') }}">
     </head>
     <body>
@@ -86,7 +86,7 @@
                                 <div class="flex-col justify-between hidden col-span-2 px-16 py-6 bg-[#4f46e5] bg-no-repeat bg-cover dark:bg-gray-800 lg:flex" style="background-image: url({{ asset('https://rwandaequip.org.rw/wp-content/uploads/2023/01/RV5_1504-1024x682.jpg') }});">
                                     <div class="logo">
                                         <a href="{{ route('home') }}">
-                                            <h2 class="text-white">ACCREDITATION</h2>
+                                            <h2 class="text-white">SCAW</h2>
                                         </a>
                                     </div>
                                     <div>

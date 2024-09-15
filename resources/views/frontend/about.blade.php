@@ -39,7 +39,7 @@
 
                 <div class="lg:col-span-7 md:col-span-6 mt-14 md:mt-0">
                     <div class="lg:ms-5">
-                        <h3 class="mb-6 md:text-[26px] text-2xl md:leading-normal leading-normal font-semibold">Short Course <br> Accreditation System</h3>
+                        <h3 class="mb-6 md:text-[26px] text-2xl md:leading-normal leading-normal font-semibold">Short Course <br> SCAW System</h3>
 
                         <p class="max-w-xl text-slate-400">
                             A platform where companies post training programs, and students apply to develop new skills and enhance their careers.

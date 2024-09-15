@@ -1,7 +1,7 @@
 <div class="side-nav side-nav-transparent side-nav-expand">
     <div class="side-nav-header">
         <div class="px-6 py-24 logo">
-            <h2 class="text-dark" style="font-size: 16px">ACCREDITATION</h2>
+            <h2 class="text-dark" style="font-size: 16px">SCAW</h2>
         </div>
     </div>
     <div class="relative side-nav-content side-nav-scroll">
