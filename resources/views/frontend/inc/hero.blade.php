@@ -2,7 +2,7 @@
     <div class="absolute inset-0 bg-emerald-600/5 dark:bg-emerald-600/10"></div>
     <div class="container z-1">
         <div class="relative grid grid-cols-1 mt-10 text-center">
-            <h4 class="mb-5 text-4xl font-bold leading-normal lg:leading-normal lg:text-5xl">Join us <span class="font-bold text-emerald-600">Accreditation</span> <br> Webapp</h4>
+            <h4 class="mb-5 text-4xl font-bold leading-normal lg:leading-normal lg:text-5xl">Short Course <span class="font-bold text-emerald-600">Accreditation</span> <br> Webapp</h4>
             <p class="max-w-xl mx-auto text-lg text-slate-400">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex optio magni nulla quas fugit pariatur quod nam odio in fugiat?
             </p>

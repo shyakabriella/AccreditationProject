@@ -17,7 +17,9 @@
                             <div class="grid h-full lg:grid-cols-3">
                                 <div class="flex-col justify-between hidden col-span-2 px-16 py-6 bg-[#4f46e5] bg-no-repeat bg-cover dark:bg-gray-800 lg:flex" style="background-image: url({{ asset('https://live.staticflickr.com/65535/52725743613_1af8ed0fd5_z.jpg') }});">
                                     <div class="logo">
-                                        <h2 class="text-white">ACCREDITATION</h2>
+                                        <a href="{{ route('home') }}">
+                                            <h2 class="text-white">ACCREDITATION</h2>
+                                        </a>
                                     </div>
                                     <div>
                                         <h3 class="mb-4 text-white">Welcome</h3>
