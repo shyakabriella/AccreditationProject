@@ -32,7 +32,7 @@
             document.addEventListener('DOMContentLoaded', function () {
                 @if (session('success'))
                     Swal.fire({
-                        position: 'top-end',
+                        position: 'top',
                         icon: 'success',
                         title: '{{ session('success') }}',
                         showConfirmButton: false,
@@ -43,7 +43,7 @@
 
                 @if (session('error'))
                     Swal.fire({
-                        position: 'top-end',
+                        position: 'top',
                         icon: 'error',
                         title: '{{ session('error') }}',
                         showConfirmButton: false,
