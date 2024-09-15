@@ -15,7 +15,7 @@
                     <main class="h-full">
                         <div class="relative flex flex-col flex-auto h-full page-container">
                             <div class="grid h-full lg:grid-cols-3">
-                                <div class="flex-col justify-between hidden col-span-2 px-16 py-6 bg-[#4f46e5] bg-no-repeat bg-cover dark:bg-gray-800 lg:flex" style="background-image: url({{ asset('backend/img/auth/register.jpg') }});">
+                                <div class="flex-col justify-between hidden col-span-2 px-16 py-6 bg-[#4f46e5] bg-no-repeat bg-cover dark:bg-gray-800 lg:flex" style="background-image: url({{ asset('https://live.staticflickr.com/65535/52725743613_1af8ed0fd5_z.jpg') }});">
                                     <div class="logo">
                                         <h2 class="text-white">ACCREDITATION</h2>
                                     </div>

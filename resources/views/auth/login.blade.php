@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flex-col justify-between hidden col-span-2 px-16 py-6 bg-[#4f46e5] bg-no-repeat bg-cover dark:bg-gray-800 lg:flex" style="background-image: url({{ asset('backend/img/auth/register.jpg') }});">
+                                <div class="flex-col justify-between hidden col-span-2 px-16 py-6 bg-[#4f46e5] bg-no-repeat bg-cover dark:bg-gray-800 lg:flex" style="background-image: url({{ asset('https://rwandaequip.org.rw/wp-content/uploads/2023/01/RV5_1504-1024x682.jpg') }});">
                                     <div class="logo">
                                         <h2 class="text-white">ACCREDITATION</h2>
                                     </div>
