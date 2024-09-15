@@ -24,7 +24,7 @@ Route::middleware(['auth', 'role:admin,institution,company'])->group(function ()
     Route::get('/dashboard', [App\Http\Controllers\Admin\PagesController::class, 'dashboard'])->name('dashboard');
     Route::get('/training-programs/create', [App\Http\Controllers\Admin\PagesController::class, 'createTrainingProgram'])->name('createTrainingProgram');
     Route::get('/training-programs', [App\Http\Controllers\Admin\PagesController::class, 'getTrainingPrograms'])->name('getTrainingPrograms');
-    Route::get('/training-programs', [App\Http\Controllers\Admin\PagesController::class, 'generateTrainingProgramReport'])->name('generateTrainingProgramReport');
+    Route::get('/report/training-programs', [App\Http\Controllers\Admin\PagesController::class, 'generateTrainingProgramReport'])->name('generateTrainingProgramReport');
     Route::post('/training-programs', [App\Http\Controllers\Admin\PagesController::class, 'storeTrainingProgram'])->name('storeTrainingProgram');
     Route::get('/training-programs/{id}/edit', [App\Http\Controllers\Admin\PagesController::class, 'editTrainingProgram'])->name('editTrainingProgram');
     Route::put('/training-programs/{id}', [App\Http\Controllers\Admin\PagesController::class, 'updateTrainingProgram'])->name('updateTrainingProgram');
@@ -32,6 +32,7 @@ Route::middleware(['auth', 'role:admin,institution,company'])->group(function ()
     Route::post('/training-programs/{id}/send-application', [App\Http\Controllers\Admin\PagesController::class, 'sendApplication'])->name('sendApplication');
 
     Route::get('/applications', [App\Http\Controllers\Admin\PagesController::class, 'getApplications'])->name('getApplications');
+    Route::get('/reports/program-applications', [App\Http\Controllers\Admin\PagesController::class, 'generateProgramApplicationsReport'])->name('generateProgramApplicationsReport');
     Route::post('/update-application-status', [App\Http\Controllers\Admin\PagesController::class, 'updateApplicationStatus'])->name('updateApplicationStatus');
 
     Route::get('/{id}', [App\Http\Controllers\Admin\PagesController::class, 'getProfile'])->name('getProfile');

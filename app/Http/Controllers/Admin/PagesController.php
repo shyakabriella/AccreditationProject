@@ -258,6 +258,19 @@ class PagesController extends Controller
         return view('backend.getApplications', compact('applications'));
     }
 
+    public function generateProgramApplicationsReport()
+    {
+        $institutionId = Auth::user()->institution->id;
+        $applications = ProgramApplicant::with('trainee', 'trainingProgram')
+            ->where('institution_id', $institutionId)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $pdf = PDF::loadView('backend.reports.programApplications', compact('applications'));
+
+        return $pdf->download('program_applications_report.pdf');
+    }
+
     public function getProfile($id)
     {
         $user = User::with('institution')->findOrFail($id);
