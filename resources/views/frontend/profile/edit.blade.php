@@ -65,7 +65,11 @@
 
                                 <div class="lg:col-span-6">
                                     <label class="font-medium form-label">Education Level :</label>
-                                    <input type="text" class="mt-2 border form-input border-slate-100 dark:border-slate-800" value="{{ $trainee->education_level ?? '' }}" name="education_level">
+                                    <select class="mt-2 border form-input border-slate-100 dark:border-slate-800" name="education_level">
+                                        <option>Choose Education Level</option>
+                                        <option value="High School" {{ (isset($trainee->education_level) && $trainee->education_level == 'High School') ? 'selected' : '' }}>High School</option>
+                                        <option value="University" {{ (isset($trainee->education_level) && $trainee->education_level == 'University') ? 'selected' : '' }}>University</option>
+                                    </select>
                                 </div>
                             </div>
 

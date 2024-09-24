@@ -3,17 +3,16 @@
 @section('content')
 <div class="relative flex flex-col flex-auto h-full px-4 py-4 page-container sm:px-6 md:px-8 sm:py-6">
     <div class="container mx-auto">
-        <div class="card adaptable-card shadow-lg">
-            <div class="card-header flex items-center justify-between p-4 border-b">
+        <div class="shadow-lg card adaptable-card">
+            <div class="flex items-center justify-between p-4 border-b card-header">
                 <h3 class="text-lg font-semibold text-gray-800">Training Program Application Details</h3>
                 <a href="{{ route('trainingRequests') }}" class="btn btn-sm btn-outline">Back to Requests</a>
             </div>
-            <div class="card-body p-6">
+            <div class="p-6 card-body">
                 <div class="flex items-start gap-6">
-                    <!-- Program Image -->
-                    <div class="w-1/3">
+                    <div class="w-1/2">
                         @if($request->trainingProgram->image)
-                            <img src="{{ asset('storage/' . $request->trainingProgram->image) }}" alt="{{ $request->trainingProgram->name }}" class="w-full h-auto rounded-lg shadow-sm">
+                            <img src="{{ asset('storage/' . $request->trainingProgram->image) }}" alt="{{ $request->trainingProgram->name }}" class="w-24 h-auto rounded-lg shadow-sm">
                         @else
                             <img src="https://media.istockphoto.com/id/1352945762/vector/no-image-available-like-missing-picture.jpg?s=612x612&w=0&k=20&c=4X-znbt02a8EIdxwDFaxfmKvUhTnLvLMv1i1f3bToog=" alt="Default Image" class="w-full h-auto rounded-lg shadow-sm">
                         @endif
@@ -24,13 +23,13 @@
                         <!-- Program Details -->
                         <div class="mb-4">
                             <h4 class="text-xl font-bold">{{ $request->trainingProgram->name }}</h4>
-                            <p class="text-gray-600 mb-2"><strong>Institution:</strong> {{ $request->trainingProgram->institution->name }}</p>
-                            <p class="text-gray-600 mb-2"><strong>Source of Competency:</strong> {{ $request->trainingProgram->source_of_competency }}</p>
-                            <p class="text-gray-600 mb-2"><strong>Module Duration:</strong> {{ $request->trainingProgram->module_duration }} hours</p>
-                            <p class="text-gray-600 mb-2"><strong>Training Duration:</strong> {{ $request->trainingProgram->training_duration }} weeks</p>
-                            <p class="text-gray-600 mb-2"><strong>Number of Trainees:</strong> {{ $request->trainingProgram->number_of_trainees }}</p>
-                            <p class="text-gray-600 mb-2"><strong>Entry Requirements:</strong> {{ $request->trainingProgram->entry_requirements }}</p>
-                            <p class="text-gray-600 mb-2"><strong>Description:</strong> {{ $request->trainingProgram->description }}</p>
+                            <p class="mb-2 text-gray-600"><strong>Institution:</strong> {{ $request->trainingProgram->institution->name }}</p>
+                            <p class="mb-2 text-gray-600"><strong>Source of Competency:</strong> {{ $request->trainingProgram->source_of_competency }}</p>
+                            <p class="mb-2 text-gray-600"><strong>Module Duration:</strong> {{ $request->trainingProgram->module_duration }} hours</p>
+                            <p class="mb-2 text-gray-600"><strong>Training Duration:</strong> {{ $request->trainingProgram->training_duration }} weeks</p>
+                            <p class="mb-2 text-gray-600"><strong>Number of Trainees:</strong> {{ $request->trainingProgram->number_of_trainees }}</p>
+                            <p class="mb-2 text-gray-600"><strong>Entry Requirements:</strong> {{ $request->trainingProgram->entry_requirements }}</p>
+                            <p class="mb-2 text-gray-600"><strong>Description:</strong> {!! $request->trainingProgram->description !!}</p>
                         </div>
 
                         <!-- Application Details -->

@@ -4,9 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Accreditation</title>
+        <title>SCAW</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/style.css') }}">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
@@ -33,7 +32,7 @@
             document.addEventListener('DOMContentLoaded', function () {
                 @if (session('success'))
                     Swal.fire({
-                        position: 'top-end',
+                        position: 'top',
                         icon: 'success',
                         title: '{{ session('success') }}',
                         showConfirmButton: false,
@@ -44,7 +43,7 @@
 
                 @if (session('error'))
                     Swal.fire({
-                        position: 'top-end',
+                        position: 'top',
                         icon: 'error',
                         title: '{{ session('error') }}',
                         showConfirmButton: false,

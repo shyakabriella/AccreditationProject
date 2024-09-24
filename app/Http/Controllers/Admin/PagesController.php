@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use PDF;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Module;
 use App\Models\Institution;
 use Illuminate\Http\Request;
 use App\Models\TrainingProgram;
 use App\Models\ProgramApplicant;
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -18,7 +19,32 @@ class PagesController extends Controller
 {
     public function dashboard()
     {
-        return view('backend.dashboard');
+        $user = Auth::user();
+        $data = [];
+
+        if ($user->role === 'admin') {
+            $data['totalInstitutions'] = Institution::count();
+            $data['newInstitutionsThisMonth'] = Institution::whereMonth('created_at', Carbon::now()->month)->count();
+            $data['totalApplications'] = ProgramApplicant::count();
+            $data['newApplicationsThisMonth'] = ProgramApplicant::whereMonth('created_at', Carbon::now()->month)->count();
+        } elseif ($user->role === 'institution') {
+            $institutionId = $user->institution->id ?? null;
+            if ($institutionId) {
+                $data['totalTrainingPrograms'] = TrainingProgram::where('institution_id', $institutionId)->count();
+                $data['newTrainingProgramsThisMonth'] = TrainingProgram::where('institution_id', $institutionId)
+                    ->whereMonth('created_at', Carbon::now()->month)
+                    ->count();
+                $data['totalApplications'] = ProgramApplicant::where('institution_id', $institutionId)->count();
+                $data['newApplicationsThisMonth'] = ProgramApplicant::where('institution_id', $institutionId)
+                    ->whereMonth('created_at', Carbon::now()->month)
+                    ->count();
+            } else {
+                // Handle case where institution user doesn't have an associated institution
+                $data['error'] = 'No institution associated with this account.';
+            }
+        }
+
+        return view('backend.dashboard', $data);
     }
 
     public function getTrainingPrograms()
@@ -35,6 +61,18 @@ class PagesController extends Controller
             ->get();
 
         return view('backend.trainingPrograms.index', compact('trainingPrograms'));
+    }
+
+    public function generateTrainingProgramReport()
+    {
+        $institutionId = auth()->user()->institution->id;
+        $trainingPrograms = TrainingProgram::where('institution_id', $institutionId)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $pdf = PDF::loadView('backend.reports.trainingPrograms', compact('trainingPrograms'));
+
+        return $pdf->download('training_programs_report.pdf');
     }
 
     public function createTrainingProgram()
@@ -218,6 +256,19 @@ class PagesController extends Controller
             ->get();
 
         return view('backend.getApplications', compact('applications'));
+    }
+
+    public function generateProgramApplicationsReport()
+    {
+        $institutionId = Auth::user()->institution->id;
+        $applications = ProgramApplicant::with('trainee', 'trainingProgram')
+            ->where('institution_id', $institutionId)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $pdf = PDF::loadView('backend.reports.programApplications', compact('applications'));
+
+        return $pdf->download('program_applications_report.pdf');
     }
 
     public function getProfile($id)

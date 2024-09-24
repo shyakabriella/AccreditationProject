@@ -1,13 +1,13 @@
 <div class="side-nav side-nav-transparent side-nav-expand">
     <div class="side-nav-header">
-        <div class="px-6 py-24 logo">
-            <h2 class="text-dark" style="font-size: 16px">ACCREDITATION</h2>
+        <div class="px-6 py-24">
+            <h2 class="text-center text-dark" style="font-size: 28px; padding-top: 10px; color: #065F46;">SCAW</h2>
         </div>
     </div>
     <div class="relative side-nav-content side-nav-scroll">
         <nav class="px-4 pb-4 menu menu-transparent">
             <div class="menu-group">
-                <ul>
+                <ul style="padding-top: 50px">
                     @if(auth()->user()->role === 'admin')
                         <li data-menu-item="dashboard" class="mb-2 menu-item menu-item-single">
                             <a class="menu-item-link" href="{{ route('dashboard') }}">

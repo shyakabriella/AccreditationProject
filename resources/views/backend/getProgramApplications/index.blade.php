@@ -7,6 +7,10 @@
             <div class="card-body">
                 <div class="flex items-center justify-between mb-4">
                     <h3>Training Program Applications</h3>
+                    <!-- Download Report Button -->
+                    <a href="{{ route('trainingProgramApplicationsReport') }}" class="btn btn-solid">
+                        Download Report (PDF)
+                    </a>
                 </div>
                 <div class="overflow-x-auto">
                     <table id="training-program-requests-data-table" class="table-default table-hover data-table">
@@ -26,7 +30,7 @@
                                     <td>{{ $request->trainingProgram->institution->name }}</td>
                                     <td>{{ $request->trainingProgram->name }}</td>
                                     <td>{{ $request->trainingProgram->source_of_competency }}</td>
-                                    <td>{{ $request->trainingProgram->training_duration }}</td>
+                                    <td>{{ $request->trainingProgram->training_duration }} Months</td>
                                     <td>
                                         @if ($request->status == 'pending')
                                             <span class="text-white bg-yellow-100 border-0 rounded tag dark:text-yellow-100 dark:bg-yellow-500/20" style="background: orange;">Pending</span>

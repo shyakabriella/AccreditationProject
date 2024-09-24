@@ -4,12 +4,12 @@
             <div class="block sm:hidden">
                 {{-- <img src="assets/images/logo-icon-40.png" class="inline-block h-10 dark:hidden"  alt="">
                 <img src="assets/images/logo-icon-40-white.png" class="hidden h-10 dark:inline-block"  alt=""> --}}
-                SCAA
+                SCAW
             </div>
             <div class="hidden sm:block">
                 {{-- <img src="assets/images/logo-dark.png" class="h-[24px] inline-block dark:hidden" alt="">
                 <img src="assets/images/logo-white.png" class="h-[24px] hidden dark:inline-block" alt=""> --}}
-                SCAA
+                SCAW
             </div>
         </a>
         <div class="menu-extras">
@@ -79,17 +79,17 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('home') }}" class="sub-menu-item">
+                    <a href="{{ route('about') }}" class="sub-menu-item">
                         About
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('getTrades') }}" class="sub-menu-item">
-                        Trades
+                        Courses
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('home') }}" class="sub-menu-item">
+                    <a href="{{ route('contact') }}" class="sub-menu-item">
                         Contacts
                     </a>
                 </li>

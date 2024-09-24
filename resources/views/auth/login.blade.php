@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Accreditation - Sign Up</title>
+        <title>SCAW - Sign In</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/style.css') }}">
     </head>
     <body>
@@ -33,7 +33,8 @@
                                                                 type="email"
                                                                 name="email"
                                                                 placeholder="Email Address"
-                                                                value=""
+                                                                value="{{ old('email') }}"
+                                                                required
                                                             >
                                                         </div>
                                                     </div>
@@ -46,6 +47,7 @@
                                                                     type="password"
                                                                     name="password"
                                                                     placeholder="Password"
+                                                                    required
                                                                 >
                                                                 <div class="input-suffix-end">
                                                                     <span class="text-xl cursor-pointer">
@@ -68,10 +70,10 @@
                                                     </div>
                                                     <div class="flex justify-between mb-6">
                                                         <label class="mb-0 checkbox-label">
-                                                            <input class="checkbox" type="checkbox" value="true" checked>
+                                                            <input class="checkbox" type="checkbox" name="remember">
                                                             <span class="ltr:ml-2 rtl:mr-2">Remember Me</span>
                                                         </label>
-                                                        <a class="text-primary-600 hover:underline" href="#">Forgot Password?</a>
+                                                        <a class="text-primary-600 hover:underline" href="{{ route('password.request') }}">Forgot Password?</a>
                                                     </div>
                                                     <button class="w-full btn btn-solid" type="submit">Sign In</button>
                                                     <div class="mt-4 text-center">
@@ -83,9 +85,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flex-col justify-between hidden col-span-2 px-16 py-6 bg-[#4f46e5] bg-no-repeat bg-cover dark:bg-gray-800 lg:flex" style="background-image: url({{ asset('backend/img/auth/register.jpg') }});">
+                                <div class="flex-col justify-between hidden col-span-2 px-16 py-6 bg-[#4f46e5] bg-no-repeat bg-cover dark:bg-gray-800 lg:flex"
+                                     style="background-image: url('{{ asset('https://rwandaequip.org.rw/wp-content/uploads/2023/01/RV5_1504-1024x682.jpg') }}'); background-size: cover; background-position: center;">
                                     <div class="logo">
-                                        <h2 class="text-white">ACCREDITATION</h2>
+                                        <a href="{{ route('home') }}">
+                                            <h2 class="text-white">SCAW</h2>
+                                        </a>
                                     </div>
                                     <div>
                                         <h3 class="mb-4 text-white">Welcome</h3>

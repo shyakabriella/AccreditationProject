@@ -7,7 +7,7 @@
                         <div class="md:col-span-3">
                             <a href="#" class="flex justify-center md:justify-start focus:outline-none">
                                 {{-- <img src="assets/images/logo-light.png" class="" alt=""> --}}
-                                Accreditation App
+                                SCAW
                             </a>
                         </div>
                         <div class="md:col-span-9">
@@ -15,6 +15,21 @@
                                 <li class="inline-block">
                                     <a href="{{ route('home') }}" class="font-medium text-gray-300 duration-500 ease-in-out hover:text-gray-400">
                                         Home
+                                    </a>
+                                </li>
+                                <li class="inline-block">
+                                    <a href="{{ route('about') }}" class="font-medium text-gray-300 duration-500 ease-in-out hover:text-gray-400">
+                                        About
+                                    </a>
+                                </li>
+                                <li class="inline-block">
+                                    <a href="{{ route('getTrades') }}" class="font-medium text-gray-300 duration-500 ease-in-out hover:text-gray-400">
+                                        Training Programs
+                                    </a>
+                                </li>
+                                <li class="inline-block">
+                                    <a href="{{ route('contact') }}" class="font-medium text-gray-300 duration-500 ease-in-out hover:text-gray-400">
+                                        Contact Us
                                     </a>
                                 </li>
                             </ul>
@@ -29,7 +44,7 @@
         <div class="container text-center">
             <div class="grid items-center gap-6 md:grid-cols-2">
                 <div class="text-center md:text-start">
-                    <p class="mb-0 font-medium text-gray-300">© <script>document.write(new Date().getFullYear())</script></p>
+                    <p class="mb-0 font-medium text-gray-300">© <script>document.write(new Date().getFullYear())</script> SCAW</p>
                 </div>
             </div>
         </div>
