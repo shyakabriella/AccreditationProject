@@ -2,14 +2,13 @@
     <div class="container">
         <a class="logo" href="{{ route('home') }}">
             <div class="block sm:hidden">
-                {{-- <img src="assets/images/logo-icon-40.png" class="inline-block h-10 dark:hidden"  alt="">
-                <img src="assets/images/logo-icon-40-white.png" class="hidden h-10 dark:inline-block"  alt=""> --}}
+              
                 SCAW
             </div>
             <div class="hidden sm:block">
-                {{-- <img src="assets/images/logo-dark.png" class="h-[24px] inline-block dark:hidden" alt="">
-                <img src="assets/images/logo-white.png" class="h-[24px] hidden dark:inline-block" alt=""> --}}
-                SCAW
+                <img src="frontend/1.png" width="100px" alt="">
+               
+                
             </div>
         </a>
         <div class="menu-extras">

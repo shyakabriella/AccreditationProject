@@ -1,49 +1,88 @@
-<section class="relative w-full md:py-56 py-36">
-    <div class="absolute inset-0 bg-emerald-600/5 dark:bg-emerald-600/10"></div>
-    <div class="container z-1">
-        <div class="relative grid grid-cols-1 mt-10 text-center">
-            <h4 class="mb-5 text-4xl font-bold leading-normal lg:leading-normal lg:text-5xl">Short Course <span class="font-bold text-emerald-600">Accreditation</span> <br> Webapp</h4>
-            <p class="mx-auto text-lg text-slate-400">
-                SCAW designed to streamline the process of applying for school accreditation in Rwanda under the Rwanda TVET Board (RTB). The system will enable schools to apply for accreditation, manage student portfolios, and receive RTB certification entirely online. The system will also facilitate communication between schools, students, and RTB, eliminating the need for physical visits and paperwork.
-            </p>
-
-            <div class="d-flex" id="reserve-form">
-                <div class="mx-auto md:w-5/6">
-                    <div class="mt-8 lg:col-span-10">
-                        <div class="p-3 bg-white border-0 rounded-md shadow dark:bg-slate-900">
-                            <form action="#">
-                                <div class="registration-form text-dark text-start">
-                                    <div class="grid grid-cols-1 gap-6 lg:grid-cols-4 md:grid-cols-2 lg:gap-0">
-                                        <div class="relative filter-search-form filter-border">
-                                            <i class="uil uil-briefcase-alt icons"></i>
-                                            <input name="name" type="text" id="job-keyword" class="border-0 form-input filter-input-box bg-gray-50 dark:bg-slate-800" placeholder="Search your Keywords">
-                                        </div>
-
-                                        <div class="relative filter-search-form filter-border">
-                                            <i class="uil uil-map-marker icons"></i>
-                                            <select class="form-select" data-trigger name="choices-location" id="choices-location" aria-label="Default select example">
-                                                <option value="RW">Rwanda</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="relative filter-search-form filter-border">
-                                            <i class="uil uil-briefcase-alt icons"></i>
-                                            <select class="form-select" data-trigger name="choices-type" id="choices-type" aria-label="Default select example">
-                                                <option selected="" value="1">3 Months</option>
-                                                <option value="2">3 Months</option>
-                                                <option value="3">6 Months</option>
-                                                <option value="4">1 Year</option>
-                                            </select>
-                                        </div>
-
-                                        <button class="text-white btn bg-emerald-600 hover:bg-emerald-700 border-emerald-600 hover:border-emerald-700 searchbtn submit-btn w-100">Search</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+<section class="relative w-full md:py-56 py-36 bg-blue-500">
+    <!-- Slider container -->
+    <div class="absolute inset-0 w-full h-full">
+        <div class="slider">
+            <!-- Slides -->
+            <div class="mySlides fade">
+                <img src="frontend/ac.png" alt="Slider Image 1">
+            </div>
+            <div class="mySlides fade">
+                <img src="frontend/acc.png" alt="Slider Image 2">
+                <div class="text">Explore Interactive Features</div>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+ /* Slider */
+.slider {
+    max-width: 50%;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    top: 70px; /* Adjust this value as needed to move the slider down */
+}
+
+.mySlides {
+    display: none;
+    position: relative;
+    animation: fade 8s infinite;
+    width: 100%; /* Full width of the container */
+    height: 100%; /* Full height adjusted */
+}
+
+.mySlides img {
+    width: 80%; /* Makes the image take full width of the container */
+    height: 50%; /* Adjusts height automatically to maintain aspect ratio */
+    display: block;
+    margin: auto;
+    border-radius: 0; /* Removes the border radius to have sharp corners */
+    transition: border-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.mySlides:hover img {
+    border: 5px solid #4CAF50; /* Highlight the image on hover with a green border */
+}
+
+.text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6); /* Text shadow for better visibility */
+}
+
+/* Fading animation */
+@keyframes fade {
+    0% {opacity: 0}
+    20% {opacity: 1}
+    80% {opacity: 1}
+    100% {opacity: 0}
+}
+
+
+
+</style>
+
+<script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].classList.remove("fade-up"); // Ensure no animation class is present initially
+            slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        slides[slideIndex-1].style.display = "block";  
+        slides[slideIndex-1].classList.add("fade-up"); // Add the animation class to start animation
+        setTimeout(showSlides, 6000); // Change image every 6 seconds
+    }
+</script>
+

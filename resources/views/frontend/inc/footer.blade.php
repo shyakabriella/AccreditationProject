@@ -1,52 +1,65 @@
-<footer class="relative bg-slate-900 dark:bg-slate-800">
-    <div class="container">
-        <div class="grid grid-cols-1">
-            <div class="relative py-12">
-                <div class="relative w-full">
-                    <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px]">
-                        <div class="md:col-span-3">
-                            <a href="#" class="flex justify-center md:justify-start focus:outline-none">
-                                {{-- <img src="assets/images/logo-light.png" class="" alt=""> --}}
-                                SCAW
-                            </a>
-                        </div>
-                        <div class="md:col-span-9">
-                            <ul class="space-x-3 text-center list-disc footer-list md:text-end">
-                                <li class="inline-block">
-                                    <a href="{{ route('home') }}" class="font-medium text-gray-300 duration-500 ease-in-out hover:text-gray-400">
-                                        Home
-                                    </a>
-                                </li>
-                                <li class="inline-block">
-                                    <a href="{{ route('about') }}" class="font-medium text-gray-300 duration-500 ease-in-out hover:text-gray-400">
-                                        About
-                                    </a>
-                                </li>
-                                <li class="inline-block">
-                                    <a href="{{ route('getTrades') }}" class="font-medium text-gray-300 duration-500 ease-in-out hover:text-gray-400">
-                                        Training Programs
-                                    </a>
-                                </li>
-                                <li class="inline-block">
-                                    <a href="{{ route('contact') }}" class="font-medium text-gray-300 duration-500 ease-in-out hover:text-gray-400">
-                                        Contact Us
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<footer class="bg-slate-900 text-gray-300">
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Logo and Brand Name -->
+            <div>
+                <a href="#" class="flex justify-center md:justify-start focus:outline-none">
+                    <span class="text-xl font-bold text-white">SCAW</span>
+                </a>
+                <p class="mt-2 text-gray-400">Streamlining school accreditation in Rwanda.</p>
+                <!-- Social Media Icons -->
+                <div class="flex justify-center md:justify-start space-x-4 mt-4">
+                    <a href="https://facebook.com" class="hover:text-gray-400">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com" class="hover:text-gray-400">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://linkedin.com" class="hover:text-gray-400">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://instagram.com" class="hover:text-gray-400">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
+            </div>
+
+            <!-- Footer Navigation -->
+            <div class="col-span-3 flex justify-around">
+                <ul class="space-y-2">
+                    <li><a href="{{ route('home') }}" class="hover:text-gray-400">Home</a></li>
+                    <li><a href="{{ route('about') }}" class="hover:text-gray-400">About</a></li>
+                    <li><a href="{{ route('getTrades') }}" class="hover:text-gray-400">Training Programs</a></li>
+                    <li><a href="{{ route('contact') }}" class="hover:text-gray-400">Contact Us</a></li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <div class="py-[30px] px-0 border-t border-gray-800 dark:border-gray-700">
-        <div class="container text-center">
-            <div class="grid items-center gap-6 md:grid-cols-2">
-                <div class="text-center md:text-start">
-                    <p class="mb-0 font-medium text-gray-300">© <script>document.write(new Date().getFullYear())</script> SCAW</p>
-                </div>
-            </div>
-        </div>
+    <div class="py-4 border-t border-gray-700 text-center">
+        <p class="text-gray-400">&copy; <script>document.write(new Date().getFullYear())</script> SCAW. All rights reserved.</p>
     </div>
 </footer>
+<style>
+    footer i {
+    font-size: 1.25rem; /* Size of the social media icons */
+}
+
+footer a {
+    color: inherit; /* Ensures links inherit the footer's text color */
+    text-decoration: none; /* Removes underline from links */
+    transition: color 0.3s; /* Smooth transition for hover effects */
+}
+
+footer ul {
+    list-style-type: none; /* Removes bullet points from list */
+}
+
+/* Additional hover effect for social media icons */
+footer a:hover {
+    color: #4CAF50; /* Changes icon color on hover */
+}
+
+</style>
