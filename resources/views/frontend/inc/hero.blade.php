@@ -2,8 +2,8 @@
     <div class="absolute inset-0 bg-emerald-600/5 dark:bg-emerald-600/10"></div>
     <div class="container z-1">
         <div class="relative grid grid-cols-1 mt-10 text-center">
-            <h4 class="mb-5 text-4xl font-bold leading-normal lg:leading-normal lg:text-5xl">Join us & <span class="font-bold text-emerald-600">Explore</span> <br> <span class="font-bold text-emerald-600">Thousands</span> of Jobs</h4>
-            <p class="max-w-xl mx-auto text-lg text-slate-400">Find Jobs, Employment & Career Opportunities. Some of the companies we've helped recruit excellent applicants over the years.</p>
+            <h4 class="mb-5 text-4xl font-bold leading-normal lg:leading-normal lg:text-5xl">Short Course <span class="font-bold text-emerald-600"></span> <br> <span class="font-bold text-emerald-600">Accreditation</span>Web App</h4>
+            <p class="max-w-xl mx-auto text-lg text-slate-400">Accreditation App.</p>
 
             <div class="d-flex" id="reserve-form">
                 <div class="mx-auto md:w-5/6">
